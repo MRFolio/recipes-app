@@ -4,7 +4,7 @@ interface Id {
   id: string;
 }
 
-const SingleRecipe = () => {
+const SingleRecipe = (): JSX.Element => {
   const { id } = useParams();
   const history = useHistory();
   //   const [loading, setLoading] = React.useState(false);
@@ -18,7 +18,7 @@ const SingleRecipe = () => {
     return <p>Loading...</p>;
   }
 
-  if (!cocktail) {
+  if (!recipe) {
     return <h2 className="section-title">no cocktail to display</h2>;
   }
 

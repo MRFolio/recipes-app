@@ -1,18 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit';
-import counterReducer from './slices/allRecipesSlice';
+import { useDispatch } from 'react-redux';
+import allRecipesReducer from './allRecipesSlice';
 
-export default configureStore({
+const store = configureStore({
   reducer: {
-    counter: counterReducer,
+    allRecipes: allRecipesReducer,
   },
 });
 
 export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
 
-// export type RootState = ReturnType<typeof store.getState>;
-// export type AppThunk<ReturnType = void> = ThunkAction<
-//   ReturnType,
-//   RootState,
-//   unknown,
-//   Action<string>
-// >;
+export const useAppDispatch = () => useDispatch<AppDispatch>();

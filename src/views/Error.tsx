@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Error = () => {
+const Error = (): JSX.Element => {
   const classes = useStyles();
   const history = useHistory();
 
