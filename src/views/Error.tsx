@@ -3,26 +3,26 @@
 // import { ArrowBack } from '@material-ui/icons';
 import { useHistory } from 'react-router-dom';
 
-const useStyles = makeStyles((theme) => ({
-  container: {
-    minHeight: '93vh',
-  },
-  paper: {
-    display: 'grid',
-    placeItems: 'center',
-    height: 176,
-    width: 500,
-    marginBottom: theme.spacing(15),
-    padding: theme.spacing(3),
-    whiteSpace: 'nowrap',
-    [theme.breakpoints.only('xs')]: {
-      width: '94vw',
-    },
-  },
-}));
+// const useStyles = makeStyles((theme) => ({
+//   container: {
+//     minHeight: '93vh',
+//   },
+//   paper: {
+//     display: 'grid',
+//     placeItems: 'center',
+//     height: 176,
+//     width: 500,
+//     marginBottom: theme.spacing(15),
+//     padding: theme.spacing(3),
+//     whiteSpace: 'nowrap',
+//     [theme.breakpoints.only('xs')]: {
+//       width: '94vw',
+//     },
+//   },
+// }));
 
 const Error = (): JSX.Element => {
-  const classes = useStyles();
+  // const classes = useStyles();
   const history = useHistory();
 
   const handleClick = () => history.goBack();
