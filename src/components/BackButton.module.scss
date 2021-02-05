@@ -1,0 +1,19 @@
+.btn-primary {
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #476a2e;
+  border: 2px solid #476a2e;
+  padding: 0.45em 0.8em;
+  display: inline-block;
+  transition: all 0.3s ease-out;
+  font-size: 1rem;
+  background: transparent;
+  border-radius: 0.25em;
+  display: inline-block;
+  cursor: pointer;
+
+  &:hover {
+    background: #476a2e;
+    color: whitesmoke;
+  }
+}

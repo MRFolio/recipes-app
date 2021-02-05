@@ -23,10 +23,6 @@ const SingleRecipe = (): JSX.Element => {
   //   }
   // };
 
-  const handleBack = () => {
-    history.goBack();
-  };
-
   // if (loading) {
   //   return <p>Loading...</p>;
   // }

@@ -3,7 +3,7 @@ import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 const urlRecipeByID: string =
   'https://www.themealdb.com/api/json/v1/1/lookup.php?i=';
 
-const loadRecipeById = createAsyncThunk(
+export const loadRecipeById = createAsyncThunk(
   'allRecipes/getAllRecipes',
   async (searchInput: string) => {
     const response = await fetch(`${urlRecipeByID}${searchInput}`);

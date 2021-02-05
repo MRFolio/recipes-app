@@ -1,0 +1,44 @@
+@use "../styles/base" as b;
+
+.container {
+  //   flex: 0 0 auto;
+  background: #ede7f6;
+  padding: 0.65em;
+  border-radius: 0.25em;
+  display: inline-block;
+  //   cursor: pointer;
+  //   transition: box-shadow 0.5s ease-out;
+  &:hover {
+    box-shadow: 0 0 0px 1px rgb(167, 246, 167);
+  }
+}
+
+.imgContainer {
+  background: rgb(198, 200, 198);
+  border-radius: 0.4em 0.4em 0 0;
+
+  > img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.heading {
+  font-size: 1.1rem;
+  text-transform: capitalize;
+  letter-spacing: 0.03em;
+  text-align: center;
+  color: rgb(231, 227, 227);
+  background: b.$main-bg;
+  margin: 0;
+  padding: 0.3em;
+  border-radius: 0 0 0.4em 0.4em;
+}
+
+.card:hover,
+.card:focus,
+.card:active {
+  color: #0070f3;
+  border-color: #0070f3;
+}

@@ -1,0 +1,36 @@
+@use "../styles/base" as b;
+
+.heading {
+  background: b.$main-bg;
+  color: white;
+  margin: 0 auto;
+  padding: 0.5em;
+  text-align: center;
+  letter-spacing: 0.03em;
+  > span {
+    color: rgb(167, 246, 167);
+  }
+}
+
+.container {
+  width: 100%;
+  max-width: 1140px;
+  margin: 0.25em auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(176px, 1fr));
+  grid-gap: 0.25rem;
+  //   -webkit-overflow-scrolling: touch;
+  //   -ms-overflow-style: -ms-autohiding-scrollbar;
+
+  //   &::-webkit-scrollbar {
+  //     display: none;
+  //   }
+  //   background: red;
+}
+
+@media (max-width: 600px) {
+  .container {
+    width: 100%;
+    flex-direction: column;
+  }
+}

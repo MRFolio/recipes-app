@@ -3,21 +3,37 @@ import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 const urlCategories: string =
   'https://www.themealdb.com/api/json/v1/1/categories.php';
 
-const getCategories = createAsyncThunk('categories/getCategories', async () => {
-  const response = await fetch(urlCategories);
-  const data = await response.json();
-  return data;
-  //   dispatch(todoSlice.actions.addTodo(newTodo))
-});
+interface FetchedCategories {
+  idCategory: string;
+  strCategory: string;
+  strCategoryThumb: string;
+}
 
-interface ICategories {
+export const getCategories = createAsyncThunk(
+  'categories/getCategoriesStatus',
+  async () => {
+    const response = await fetch(urlCategories);
+    const { categories } = await response.json();
+    const categoriesFormated = categories.map(
+      ({
+        idCategory: id,
+        strCategory: category,
+        strCategoryThumb: img,
+      }: FetchedCategories) => ({ id, category, img })
+    );
+    return categoriesFormated;
+    // return categories;
+  }
+);
+
+export interface ICategory {
   id: string;
   category: string;
   img: string;
 }
 
 interface CategoriesState {
-  categories: ICategories[];
+  categories: ICategory[];
   isLoading: boolean;
   hasError: boolean;
 }
@@ -39,7 +55,7 @@ const categoriesSlice = createSlice({
     });
     builder.addCase(
       getCategories.fulfilled,
-      (state, { payload }: PayloadAction<ICategories>) => {
+      (state, { payload }: PayloadAction<ICategory>) => {
         state.categories.push(payload);
         state.isLoading = false;
         state.hasError = false;
