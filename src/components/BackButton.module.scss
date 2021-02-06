@@ -1,8 +1,10 @@
+@use "../styles/base" as b;
+
 .btn-primary {
   text-transform: uppercase;
   letter-spacing: 0.03em;
-  color: #476a2e;
-  border: 2px solid #476a2e;
+  color: b.$main-bg;
+  border: 2px solid b.$main-bg;
   padding: 0.45em 0.8em;
   display: inline-block;
   transition: all 0.3s ease-out;
@@ -11,9 +13,16 @@
   border-radius: 0.25em;
   display: inline-block;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
 
   &:hover {
-    background: #476a2e;
+    background: b.$main-bg;
     color: whitesmoke;
   }
+}
+
+.icon {
+  font-size: 1.5rem;
 }

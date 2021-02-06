@@ -1,7 +1,27 @@
-@use "base";
+@use "base" as b;
 
 .main {
   min-height: 100vh;
-  max-width: 1140px;
+  max-width: b.$max-width;
   margin: 0 auto;
+  // min-height: 100vh;
+  // padding: 0 0.5rem;
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: flex-start;
+  // align-items: center;
+
+  // padding: 5rem 0;
+  // flex: 1;
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: flex-start;
+  // align-items: center;
+}
+
+.spinner {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }

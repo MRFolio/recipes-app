@@ -31,7 +31,7 @@ const SingleCategory = (): JSX.Element => {
     } catch (error) {
       console.log(error);
     }
-  }, []);
+  }, [category]);
 
   useEffect(() => {
     fetchCategory();

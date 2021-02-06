@@ -3,3 +3,8 @@ export interface ICategory {
   category: string;
   img: string;
 }
+
+// export interface IRecipe {
+//   id: string;
+//   name: string;
+// }

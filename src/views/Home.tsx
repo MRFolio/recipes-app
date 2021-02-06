@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import ButtonChoiceContainer from '../components/ButtonChoiceContainer';
 import Categories from '../components/Categories';
 
 const Home = (): JSX.Element => {
@@ -7,11 +6,12 @@ const Home = (): JSX.Element => {
 
   return (
     <main className="main">
-      <ButtonChoiceContainer
+      {/* <ButtonChoiceContainer
         showCategories={showCategories}
         setShowCategories={setShowCategories}
-      />
-      {showCategories && <Categories />}
+      /> */}
+      {/* showCategories &&  */}
+      <Categories />
     </main>
   );
 };

@@ -7,9 +7,10 @@
   border-radius: 0.25em;
   display: inline-block;
   //   cursor: pointer;
-  //   transition: box-shadow 0.5s ease-out;
+  transition: box-shadow 0.2s ease-out, transform 0.2s ease-out;
   &:hover {
-    box-shadow: 0 0 0px 1px rgb(167, 246, 167);
+    box-shadow: 0px 2px 5px 3px rgb(148, 148, 148);
+    transform: scale(1.04);
   }
 }
 

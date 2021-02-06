@@ -1,7 +1,9 @@
 // variables
 $main-bg: rgb(30, 23, 70);
+$highlightColor: rgb(167, 246, 167);
 $box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
   rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+$max-width: 1140px;
 
 // btn variables
 
@@ -14,25 +16,14 @@ $btnShadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
   rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 
 // breakpoints
+$big-screen: 1140px;
 $tablet: 932px;
 $mobile: 628px;
 $small-mobile: 470px;
 
 // mixins
-@mixin for-mobile {
-  @media only screen and (max-width: $mobile) {
-    @content;
-  }
-}
-
-@mixin for-small-mobile {
-  @media only screen and (max-width: $small-mobile) {
-    @content;
-  }
-}
-
-@mixin for-tablet {
-  @media only screen and (max-width: $tablet) {
+@mixin mediaQuery($breakpoint) {
+  @media only screen and (max-width: $breakpoint) {
     @content;
   }
 }

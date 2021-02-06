@@ -3,19 +3,17 @@
 .heading {
   background: b.$main-bg;
   color: white;
-  margin: 0 auto;
-  padding: 0.5em;
+  margin: 0em auto 0.05em;
+  padding: 0.55em;
   text-align: center;
   letter-spacing: 0.03em;
   > span {
-    color: rgb(167, 246, 167);
+    color: b.$highlightColor;
   }
 }
 
 .container {
   width: 100%;
-  max-width: 1140px;
-  margin: 0.25em auto;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(176px, 1fr));
   grid-gap: 0.25rem;

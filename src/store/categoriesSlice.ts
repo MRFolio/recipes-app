@@ -1,43 +1,39 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { RootState } from './store';
+import { ICategory } from './types';
 
 const urlCategories: string =
   'https://www.themealdb.com/api/json/v1/1/categories.php';
 
-interface FetchedCategories {
-  idCategory: string;
-  strCategory: string;
-  strCategoryThumb: string;
-}
-
 export const getCategories = createAsyncThunk(
-  'categories/getCategoriesStatus',
+  'categories/getCategories',
   async () => {
     const response = await fetch(urlCategories);
     const { categories } = await response.json();
-    const categoriesFormated = categories.map(
-      ({
-        idCategory: id,
-        strCategory: category,
-        strCategoryThumb: img,
-      }: FetchedCategories) => ({ id, category, img })
-    );
-    return categoriesFormated;
-    // return categories;
+    const formatedCategories = categories
+      .sort((a: FetchedCategory, b: FetchedCategory) =>
+        a.strCategory.localeCompare(b.strCategory)
+      )
+      .map(
+        ({
+          idCategory: id,
+          strCategory: category,
+          strCategoryThumb: img,
+        }: FetchedCategory) => ({
+          id,
+          category,
+          img,
+        })
+      );
+    return formatedCategories;
   }
 );
-
-export interface ICategory {
-  id: string;
-  category: string;
-  img: string;
-}
 
 interface CategoriesState {
   categories: ICategory[];
   isLoading: boolean;
   hasError: boolean;
 }
-
 const initialState: CategoriesState = {
   categories: [],
   isLoading: false,
@@ -55,8 +51,8 @@ const categoriesSlice = createSlice({
     });
     builder.addCase(
       getCategories.fulfilled,
-      (state, { payload }: PayloadAction<ICategory>) => {
-        state.categories.push(payload);
+      (state, { payload }: PayloadAction<ICategory[]>) => {
+        state.categories = payload;
         state.isLoading = false;
         state.hasError = false;
       }
@@ -68,5 +64,19 @@ const categoriesSlice = createSlice({
   },
 });
 
+interface FetchedCategory {
+  idCategory: string;
+  strCategory: string;
+  strCategoryThumb: string;
+}
+
+//actions
+
 // export const {} = categoriesSlice.actions;
+
+// selectors
+export const selectCategories = (state: RootState) => state.categories;
+export const selectLoading = (state: RootState) => state.categories.isLoading;
+
+//reducer
 export default categoriesSlice.reducer;

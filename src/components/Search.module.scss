@@ -1,0 +1,48 @@
+@use "../styles/base" as b;
+
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-right: 9.5em;
+  // width: 356px;
+}
+
+.input {
+  background: white;
+  padding: 0.5em 2.25em 0.5em 0.75em;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 0.25em;
+
+  &:focus {
+    box-shadow: 0 0 0 1px b.$highlightColor;
+    outline-style: unset;
+  }
+
+  @include b.mediaQuery(b.$mobile) {
+    width: 116px;
+    transition: width 0.5s ease-out;
+    &::placeholder {
+      font-size: 1rem;
+    }
+
+    &:focus {
+      width: 100%;
+    }
+  }
+}
+
+.btn {
+  position: absolute;
+  background: transparent;
+  border: none;
+  color: b.$main-bg;
+  font-size: 1.6rem;
+  top: 50%;
+  right: 2%;
+  transform: translate(2%, -40%);
+  z-index: 10;
+  cursor: pointer;
+}

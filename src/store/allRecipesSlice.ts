@@ -2,43 +2,53 @@ import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 const urlRecipeByID: string =
   'https://www.themealdb.com/api/json/v1/1/lookup.php?i=';
+const urlRecipeBySearchName: string =
+  'https://www.themealdb.com/api/json/v1/1/search.php?s=';
 
 export const loadRecipeById = createAsyncThunk(
-  'allRecipes/getAllRecipes',
-  async (searchInput: string) => {
-    const response = await fetch(`${urlRecipeByID}${searchInput}`);
+  'allRecipes/loadRecipeById',
+  async (id: string) => {
+    const response = await fetch(`${urlRecipeByID}${id}`);
     const data = await response.json();
+    console.log(data);
     return data;
   }
 );
 
-export interface Recipe {
+export const loadRecipeBySearchInput = createAsyncThunk(
+  'allRecipes/loadRecipeBySearchInput',
+  async (searchInput: string) => {
+    const response = await fetch(`${urlRecipeBySearchName}${searchInput}`);
+    // const response = await fetch(urlRecipeBySearchName + searchInput);
+    const data = await response.json();
+    console.log(data);
+    return data;
+  }
+);
+
+// localhost favorite recipes
+// pärast type folderisse
+export interface IRecipe {
   id: string;
   name: string;
 }
 
 interface AllRecipesState {
-  value: number;
+  allRecipes: IRecipe[];
   isLoading: boolean;
-  allRecipes: Recipe[];
+  hasError: boolean;
 }
 
 const initialState = {
-  value: 0,
-  isLoading: false,
   allRecipes: [],
+  isLoading: false,
+  hasError: false,
 } as AllRecipesState;
 
 const allRecipesSlice = createSlice({
   name: 'allRecipes',
   initialState,
   reducers: {
-    increment(state) {
-      state.value += 1;
-    },
-    decrement(state, { payload }: PayloadAction<number>) {
-      state.value -= 1;
-    },
     // incrementByAmount(
     //   state,
     //   {
@@ -48,26 +58,26 @@ const allRecipesSlice = createSlice({
     //   state.value += payload;
     // },
   },
-  // extraReducers: {
-  //   [loadRecipeById.pending]: (state, action) => {
-  //     state.isLoading = true;
-  //     state.hasError = false;
-  //   },
-  //   [loadRecipeById.fulfilled]: (
-  //     state,
-  //     { payload }: PayloadAction<{ allRecipes: IRecipes[] }>
-  //   ) => {
-  //     state.allRecipes = payload;
-  //     state.isLoading = false;
-  //     state.hasError = false;
-  //   },
-  //   [loadRecipeById.rejected]: (state, action) => {
-  //     state.isLoading = false;
-  //     state.hasError = true;
-  //   },
-  // },
+  extraReducers: (builder) => {
+    builder.addCase(loadRecipeById.pending, (state, { payload }) => {
+      state.isLoading = true;
+      state.hasError = false;
+    });
+    builder.addCase(
+      loadRecipeById.fulfilled,
+      (state, { payload }: PayloadAction<IRecipe[]>) => {
+        state.allRecipes = payload;
+        state.isLoading = false;
+        state.hasError = false;
+      }
+    );
+    builder.addCase(loadRecipeById.rejected, (state, action) => {
+      state.isLoading = false;
+      state.hasError = true;
+    });
+  },
 });
 
-export const { increment, decrement } = allRecipesSlice.actions;
+// export const { } = allRecipesSlice.actions;
 
 export default allRecipesSlice.reducer;
