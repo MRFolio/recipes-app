@@ -4,6 +4,7 @@
   min-height: 100vh;
   max-width: b.$max-width;
   margin: 0 auto;
+  padding: 0.5em;
   // min-height: 100vh;
   // padding: 0 0.5rem;
   // display: flex;
@@ -19,9 +20,13 @@
   // align-items: center;
 }
 
-.spinner {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
+// .section {
+//   padding: 0.5em;
+// }
+
+// .spinner {
+//   position: fixed;
+//   top: 50%;
+//   left: 50%;
+//   transform: translate(-50%, -50%);
+// }

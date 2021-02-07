@@ -1,0 +1,43 @@
+@use "../styles/base" as b;
+
+.heading {
+  background: b.$main-bg;
+  color: white;
+  margin: 0em auto 0.05em;
+  padding: 0.55em;
+  text-align: center;
+  letter-spacing: 0.03em;
+  > span {
+    color: b.$highlightColor;
+  }
+}
+
+.container {
+  //   width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(176px, 1fr));
+  grid-gap: 0.25rem;
+  // padding: 0.5em;
+}
+
+.card {
+  // height: 150px;
+  cursor: pointer;
+}
+
+.image {
+  // object-fit: contain;
+  height: 100%;
+  width: 100%;
+}
+
+.imageContainer {
+  background: rgb(198, 200, 198);
+  border-radius: 0.4em 0.4em 0 0;
+
+  // > img {
+  //   object-fit: contain;
+  //   height: 100%;
+  //   width: 100%;
+  // }
+}

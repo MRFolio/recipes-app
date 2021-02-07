@@ -1,11 +1,11 @@
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 
 interface Id {
   id: string;
 }
 
 const SingleRecipe = (): JSX.Element => {
-  // const { id } = useParams();
+  const { id }: Id = useParams();
   const history = useHistory();
   //   const [loading, setLoading] = React.useState(false);
   //   const [recipe, setRecipe] = React.useState(null);

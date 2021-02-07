@@ -5,6 +5,12 @@ import { ICategory } from './types';
 const urlCategories: string =
   'https://www.themealdb.com/api/json/v1/1/categories.php';
 
+interface FetchedCategory {
+  idCategory: string;
+  strCategory: string;
+  strCategoryThumb: string;
+}
+
 export const getCategories = createAsyncThunk(
   'categories/getCategories',
   async () => {
@@ -34,6 +40,7 @@ interface CategoriesState {
   isLoading: boolean;
   hasError: boolean;
 }
+
 const initialState: CategoriesState = {
   categories: [],
   isLoading: false,
@@ -63,12 +70,6 @@ const categoriesSlice = createSlice({
     });
   },
 });
-
-interface FetchedCategory {
-  idCategory: string;
-  strCategory: string;
-  strCategoryThumb: string;
-}
 
 //actions
 

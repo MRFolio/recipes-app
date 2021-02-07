@@ -6,38 +6,13 @@ import styles from './Categories.module.scss';
 import Category from './Category';
 import Spinner from './Spinner';
 
-const urlCategories: string =
-  'https://www.themealdb.com/api/json/v1/1/categories.php';
-
-interface FetchedCategories {
-  idCategory: string;
-  strCategory: string;
-  strCategoryThumb: string;
-}
-
 const Categories = (): JSX.Element => {
-  // const [categories, setCategories] = useState<ICategory[]>([]);
   const dispatch = useAppDispatch();
   const { isLoading, hasError, categories } = useSelector(selectCategories);
 
-  // const fetchCategories = useCallback(async () => {
-  //   const response = await fetch(urlCategories);
-  //   const { categories } = await response.json();
-  //   const categoriesFormated = categories.map(
-  //     ({
-  //       idCategory: id,
-  //       strCategory: category,
-  //       strCategoryThumb: img,
-  //     }: FetchedCategories) => ({ id, category, img })
-  //   );
-  //   setCategories(categoriesFormated);
-  //   return categoriesFormated;
-  // }, []);
-
   useEffect(() => {
-    // fetchCategories();
     dispatch(getCategories());
-  }, [/* fetchCategories,  */ dispatch]);
+  }, [dispatch]);
 
   const renderCategories = () => {
     if (isLoading) return <Spinner />;
