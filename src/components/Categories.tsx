@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { getCategories, selectCategories } from '../store/categoriesSlice';
@@ -27,12 +28,33 @@ const Categories = (): JSX.Element => {
     );
   };
 
+  const container = {
+    hidden: {
+      opacity: 0,
+      transition: { when: 'beforeChildren' },
+    },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        // delayChildren: 0.25,
+      },
+    },
+  };
+
   return (
     <>
       <h3 className={styles.heading}>
         Choose your favourite <span>category!</span>
       </h3>
-      <section className={styles.container}>{renderCategories()}</section>
+      <motion.section
+        // variants={container}
+        // initial="hidden"
+        // animate="show"
+        className={styles.container}
+      >
+        {renderCategories()}
+      </motion.section>
     </>
   );
 };

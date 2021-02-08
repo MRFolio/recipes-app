@@ -7,6 +7,10 @@
   position: relative;
   margin-right: 9.5em;
   // width: 356px;
+
+  @include b.mediaQuery(b.$mobile) {
+    margin: 0;
+  }
 }
 
 .input {
@@ -17,13 +21,14 @@
   border-radius: 0.25em;
 
   &:focus {
-    box-shadow: 0 0 0 1px b.$highlightColor;
+    box-shadow: 0 0 1px 2px b.$highlightColor;
     outline-style: unset;
   }
 
   @include b.mediaQuery(b.$mobile) {
     width: 116px;
     transition: width 0.5s ease-out;
+
     &::placeholder {
       font-size: 1rem;
     }

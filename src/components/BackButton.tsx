@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import { IoChevronBackCircleSharp } from 'react-icons/io5';
 import { useHistory } from 'react-router-dom';
 import styles from './BackButton.module.scss';
@@ -10,10 +11,15 @@ const BackButton = (): JSX.Element => {
   };
   //back icon
   return (
-    <button onClick={handleBack} className={styles['btn-primary']}>
+    <motion.button
+      onClick={handleBack}
+      className={styles['btn-primary']}
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.96 }}
+    >
       <IoChevronBackCircleSharp className={styles.icon} />
       Go Back
-    </button>
+    </motion.button>
   );
 };
 

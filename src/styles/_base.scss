@@ -1,12 +1,11 @@
 // variables
-$main-bg: rgb(30, 23, 70);
+$main-bg: rgb(30, 22, 69);
 $highlightColor: rgb(167, 246, 167);
 $box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
   rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 $max-width: 1140px;
 
 // btn variables
-
 $btnText: rgb(246, 245, 245);
 $btnBg: #116914;
 $btnBorder: 4px double #b7d5d4;
@@ -18,7 +17,7 @@ $btnShadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
 // breakpoints
 $big-screen: 1140px;
 $tablet: 932px;
-$mobile: 628px;
+$mobile: 676px;
 $small-mobile: 470px;
 
 // mixins

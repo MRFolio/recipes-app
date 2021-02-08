@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import { MouseEvent, useState } from 'react';
 import { GiHamburgerMenu, GiMeal } from 'react-icons/gi';
 import { Link } from 'react-router-dom';
@@ -16,15 +17,22 @@ const Navbar = (): JSX.Element => {
       {/* <GrClose/> */}
       {/* {showMenu && <p>Tere</p>} */}
       <Link to="/" style={{ textDecoration: 'inherit' }}>
-        <h1 className={styles.heading}>
+        <h1 className={styles.heading} title="Go to homepage">
           <GiMeal className={styles.mealIcon} />
           <span>Recipes</span> App
         </h1>
       </Link>
       <Search />
-      <button onClick={handleClick} className={styles.hamburger}>
+      <motion.button
+        onClick={handleClick}
+        className={styles.hamburger}
+        aria-label="Open hamburger menu"
+        title="Open hamburger menu"
+        whileHover={{ scale: 1.06 }}
+        whileTap={{ scale: 0.95 }}
+      >
         <GiHamburgerMenu className={styles.burgerIcon} />
-      </button>
+      </motion.button>
     </header>
   );
 };

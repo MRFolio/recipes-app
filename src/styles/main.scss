@@ -4,7 +4,6 @@
   min-height: 100vh;
   max-width: b.$max-width;
   margin: 0 auto;
-  padding: 0.5em;
   // min-height: 100vh;
   // padding: 0 0.5rem;
   // display: flex;
@@ -18,6 +17,10 @@
   // flex-direction: column;
   // justify-content: flex-start;
   // align-items: center;
+
+  @include b.mediaQuery(b.$mobile) {
+    padding: 0;
+  }
 }
 
 // .section {

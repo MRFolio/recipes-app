@@ -7,7 +7,7 @@ import {
   useState,
 } from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
-import { loadRecipeBySearchInput } from '../store/allRecipesSlice';
+import { loadRecipeBySearchInput } from '../store/recipesSlice';
 import { useAppDispatch } from '../store/store';
 import styles from './Search.module.scss';
 

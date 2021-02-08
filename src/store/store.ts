@@ -1,11 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { useDispatch } from 'react-redux';
-import allRecipesReducer from './allRecipesSlice';
 import categoriesReducer from './categoriesSlice';
+import recipesReducer from './recipesSlice';
 
 const store = configureStore({
   reducer: {
-    allRecipes: allRecipesReducer,
+    recipes: recipesReducer,
     categories: categoriesReducer,
   },
 });

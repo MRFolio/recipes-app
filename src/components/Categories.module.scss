@@ -3,10 +3,11 @@
 .heading {
   background: b.$main-bg;
   color: white;
-  margin: 0em auto 0.05em;
+  margin: 0em auto 0.1em;
   padding: 0.55em;
   text-align: center;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.04em;
+
   > span {
     color: b.$highlightColor;
   }
@@ -15,7 +16,7 @@
 .container {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(176px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   grid-gap: 0.25rem;
   //   -webkit-overflow-scrolling: touch;
   //   -ms-overflow-style: -ms-autohiding-scrollbar;
@@ -24,11 +25,4 @@
   //     display: none;
   //   }
   //   background: red;
-}
-
-@media (max-width: 600px) {
-  .container {
-    width: 100%;
-    flex-direction: column;
-  }
 }

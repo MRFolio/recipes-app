@@ -1,27 +1,24 @@
-import { useHistory, useParams } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import Recipe from '../components/Recipe';
+import { loadRecipeById, selectSelectedRecipe } from '../store/recipesSlice';
+import { useAppDispatch } from '../store/store';
+import { pageTransition, pageVariants } from '../utils/animationsUtils';
 
 interface Id {
   id: string;
 }
 
 const SingleRecipe = (): JSX.Element => {
-  const { id }: Id = useParams();
-  const history = useHistory();
-  //   const [loading, setLoading] = React.useState(false);
-  //   const [recipe, setRecipe] = React.useState(null);
+  const { id } = useParams<Id>();
+  const dispatch = useAppDispatch();
+  const selectedRecipe = useSelector(selectSelectedRecipe);
 
-  // const { recipes, loading, error } = useSelector((state) => state.recipes);
-  // const dispatch = useDispatch();
-
-  // const fetchOneUser = async (recipeId: string) => {
-  //   try {
-  //     const resultAction = await dispatch(fetchUserById(recipeId));
-  //     const recipe = resultAction.payload;
-  //     // showToast('success', `Fetched ${user.name}`);
-  //   } catch (err) {
-  //     console.log(error.message);
-  //   }
-  // };
+  useEffect(() => {
+    dispatch(loadRecipeById(id));
+  }, [id, dispatch]);
 
   // if (loading) {
   //   return <p>Loading...</p>;
@@ -31,7 +28,18 @@ const SingleRecipe = (): JSX.Element => {
   //   return <h2 className="section-title">no recipe to display</h2>;
   // }
 
-  return <h3>Requested recipe: {/* {id} */}</h3>;
+  return (
+    <motion.main
+      className="main"
+      initial="initial"
+      animate="in"
+      variants={pageVariants}
+      transition={pageTransition}
+    >
+      <Recipe />
+      <h3>Requested recipe: {id}</h3>
+    </motion.main>
+  );
 };
 
 export default SingleRecipe;
