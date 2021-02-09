@@ -34,10 +34,8 @@ interface IFetchedRecipe {
 export const loadRecipeById = createAsyncThunk(
   'recipes/loadRecipeById',
   async (id: string) => {
-    const response = await fetch(`${urlRecipeById}${id}`);
+    const response = await fetch(urlRecipeById + id);
     const { meals } = await response.json();
-    console.log(meals);
-
     const {
       strMeal: meal,
       strCategory: category,
@@ -60,8 +58,9 @@ export const loadRecipeById = createAsyncThunk(
       strMeasure5,
       strMeasure6,
       strMeasure7,
-    } = meals[0];
-    const ingredients = [
+    }: IFetchedRecipe = meals[0];
+
+    const ingredients: (string | undefined)[] = [
       strIngredient1,
       strIngredient2,
       strIngredient3,
@@ -70,7 +69,7 @@ export const loadRecipeById = createAsyncThunk(
       strIngredient6,
       strIngredient7,
     ];
-    const ingredientMeasures = [
+    const ingredientMeasures: (string | undefined)[] = [
       strMeasure1,
       strMeasure2,
       strMeasure3,
@@ -79,7 +78,7 @@ export const loadRecipeById = createAsyncThunk(
       strMeasure6,
       strMeasure7,
     ];
-    const formatedRecipe /* : IRecipe */ = {
+    const formatedRecipe: IRecipe = {
       meal,
       category,
       area,
@@ -90,55 +89,6 @@ export const loadRecipeById = createAsyncThunk(
       ingredients,
       ingredientMeasures,
     };
-    // const formatedRecipe: IRecipe = meals[0].map(
-    //   ({
-    //     strMeal: meal,
-    //     strCategory: category,
-    //     strArea: area,
-    //     strInstructions: instructions,
-    //     strMealThumb: img,
-    //     strYoutube: linkYT,
-    //     strSource: linkWeb,
-    //     strIngredient1,
-    //     strIngredient2,
-    //     strIngredient3,
-    //     strIngredient4,
-    //     strIngredient5,
-    //     strIngredient6,
-    //     strIngredient7,
-    //     strMeasure1,
-    //     strMeasure2,
-    //     strMeasure3,
-    //     strMeasure4,
-    //     strMeasure5,
-    //     strMeasure6,
-    //     strMeasure7,
-    //   }: IFetchedRecipe) => ({
-    //     meal,
-    //     category,
-    //     area,
-    //     instructions,
-    //     img,
-    //     linkYT,
-    //     linkWeb,
-    //     strIngredient1,
-    //     strIngredient2,
-    //     strIngredient3,
-    //     strIngredient4,
-    //     strIngredient5,
-    //     strIngredient6,
-    //     strIngredient7,
-    //     strMeasure1,
-    //     strMeasure2,
-    //     strMeasure3,
-    //     strMeasure4,
-    //     strMeasure5,
-    //     strMeasure6,
-    //     strMeasure7,
-    //   })
-    // );
-
-    console.log(formatedRecipe);
 
     return formatedRecipe;
   }
@@ -147,8 +97,7 @@ export const loadRecipeById = createAsyncThunk(
 export const loadRecipeBySearchInput = createAsyncThunk(
   'recipes/loadRecipeBySearchInput',
   async (searchInput: string) => {
-    const response = await fetch(`${urlRecipeBySearchName}${searchInput}`);
-    // const response = await fetch(urlRecipeBySearchName + searchInput);
+    const response = await fetch(urlRecipeBySearchName + searchInput);
     const data = await response.json();
     return data;
   }
@@ -222,5 +171,7 @@ const recipesSlice = createSlice({
 //selectors
 export const selectSelectedRecipe = (state: RootState) =>
   state.recipes.selectedRecipe;
+export const selectIsLoading = (state: RootState) => state.recipes.isLoading;
+export const selectHasError = (state: RootState) => state.recipes.hasError;
 
 export default recipesSlice.reducer;

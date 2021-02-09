@@ -26,7 +26,10 @@ const CategoryMeals = memo(
 
     const renderCategoryMeals = () => {
       if (loading) return <Spinner />;
-      if (hasError) return <p>Cannot display categories...</p>;
+
+      if (hasError || !categoryMeals) {
+        return <p>Cannot display categories...</p>;
+      }
 
       return (
         <>
@@ -40,12 +43,7 @@ const CategoryMeals = memo(
     return (
       <>
         <h3 className={styles.heading}>
-          Choose a recipe from{' '}
-          <span>
-            {/* {getLocalStorage()} */}
-            {category}
-          </span>{' '}
-          category!
+          Choose a recipe from <span>{category}</span> category!
         </h3>
         <section className={styles.container}>{renderCategoryMeals()}</section>
       </>
