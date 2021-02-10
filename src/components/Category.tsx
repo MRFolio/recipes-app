@@ -4,33 +4,13 @@ import { useHistory } from 'react-router-dom';
 import { setSelectedCategory } from '../store/categoriesSlice';
 import { useAppDispatch } from '../store/store';
 import { ICategory } from '../store/types';
+import {
+  containerVariant,
+  element1Variant,
+  element2Variant,
+  transitionItems,
+} from '../utils';
 import styles from './Category.module.scss';
-
-const container = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      staggerDirection: -1,
-    },
-  },
-};
-
-const element1 = {
-  hidden: { opacity: 0, scale: 0.9 },
-  show: { opacity: 1, scale: 1 },
-};
-const element2 = {
-  hidden: { opacity: 0, x: 0, scale: 0.5 },
-  show: { opacity: 1, x: 0, scale: 1 },
-};
-
-const transitionItems = {
-  transition: 'tween',
-  ease: 'anticipate',
-  duration: 0.7,
-};
 
 const Category = memo(
   ({ category, img }: ICategory): JSX.Element => {
@@ -46,21 +26,21 @@ const Category = memo(
       <motion.article
         onClick={handleClick}
         className={styles.container}
-        variants={container}
+        variants={containerVariant}
         initial="hidden"
         animate="show"
         transition={transitionItems}
       >
         <motion.div
           className={styles.imgContainer}
-          variants={element1}
+          variants={element1Variant}
           transition={transitionItems}
         >
           <img src={img} alt={`${category} on plate`} />
         </motion.div>
         <motion.h4
           className={styles.heading}
-          variants={element2}
+          variants={element2Variant}
           transition={transitionItems}
         >
           {category}

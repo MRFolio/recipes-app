@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { getLocalStorage } from '../utils/localStorage';
+import { getLocalStorage } from '../utils/localStorageHelper';
 import { RootState } from './store';
 import { ICategory, ICategoryMeal } from './types';
 

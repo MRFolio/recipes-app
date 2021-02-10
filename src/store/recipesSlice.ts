@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { filterEmptyItems } from '../utils/recipeSliceHelper';
 import { RootState } from './store';
-import { IRecipe } from './types';
+import { IIngredients, IRecipe } from './types';
 
 const urlRecipeById: string =
   'https://www.themealdb.com/api/json/v1/1/lookup.php?i=';
@@ -22,6 +23,7 @@ interface IFetchedRecipe {
   strIngredient5?: string;
   strIngredient6?: string;
   strIngredient7?: string;
+  strIngredient8?: string;
   strMeasure1?: string;
   strMeasure2?: string;
   strMeasure3?: string;
@@ -29,6 +31,7 @@ interface IFetchedRecipe {
   strMeasure5?: string;
   strMeasure6?: string;
   strMeasure7?: string;
+  strMeasure8?: string;
 }
 
 export const loadRecipeById = createAsyncThunk(
@@ -51,6 +54,7 @@ export const loadRecipeById = createAsyncThunk(
       strIngredient5,
       strIngredient6,
       strIngredient7,
+      strIngredient8,
       strMeasure1,
       strMeasure2,
       strMeasure3,
@@ -58,9 +62,10 @@ export const loadRecipeById = createAsyncThunk(
       strMeasure5,
       strMeasure6,
       strMeasure7,
+      strMeasure8,
     }: IFetchedRecipe = meals[0];
 
-    const ingredients: (string | undefined)[] = [
+    const ingredientsInitial: IIngredients = [
       strIngredient1,
       strIngredient2,
       strIngredient3,
@@ -68,8 +73,14 @@ export const loadRecipeById = createAsyncThunk(
       strIngredient5,
       strIngredient6,
       strIngredient7,
+      strIngredient8,
     ];
-    const ingredientMeasures: (string | undefined)[] = [
+
+    const ingredients: IIngredients = ingredientsInitial.filter(
+      filterEmptyItems
+    );
+
+    const ingredientMeasuresInitial: IIngredients = [
       strMeasure1,
       strMeasure2,
       strMeasure3,
@@ -77,7 +88,13 @@ export const loadRecipeById = createAsyncThunk(
       strMeasure5,
       strMeasure6,
       strMeasure7,
+      strMeasure8,
     ];
+
+    const ingredientMeasures: IIngredients = ingredientMeasuresInitial.filter(
+      filterEmptyItems
+    );
+
     const formatedRecipe: IRecipe = {
       meal,
       category,

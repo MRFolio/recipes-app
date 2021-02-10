@@ -2,6 +2,7 @@
 // import { makeStyles } from '@material-ui/core/styles';
 // import { ArrowBack } from '@material-ui/icons';
 import { useHistory } from 'react-router-dom';
+import BackButton from '../components/BackButton';
 
 // const useStyles = makeStyles((theme) => ({
 //   container: {
@@ -28,7 +29,10 @@ const Error = (): JSX.Element => {
   const handleClick = () => history.goBack();
 
   return (
-    <h4>tere</h4>
+    <>
+      <h4>Nothing to see here</h4>
+      <BackButton />
+    </>
     // <Grid
     //   container
     //   direction="column"

@@ -28,31 +28,12 @@ const Categories = (): JSX.Element => {
     );
   };
 
-  const container = {
-    hidden: {
-      opacity: 0,
-      transition: { when: 'beforeChildren' },
-    },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-        // delayChildren: 0.25,
-      },
-    },
-  };
-
   return (
     <>
       <h3 className={styles.heading}>
         Choose your favourite <span>category!</span>
       </h3>
-      <motion.section
-        // variants={container}
-        // initial="hidden"
-        // animate="show"
-        className={styles.container}
-      >
+      <motion.section className={styles.container}>
         {renderCategories()}
       </motion.section>
     </>

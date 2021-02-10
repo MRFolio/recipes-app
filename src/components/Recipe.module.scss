@@ -3,75 +3,221 @@
 .container {
   display: grid;
   grid-template-columns: 2fr 3fr;
-  grid-template-rows: 276px 1fr;
+  grid-template-rows: repeat(2, 332px) 1fr;
   gap: 1em;
   margin: 0.25em 0.5em;
   // background: b.$main-bg;
+
+  @include b.mediaQuery(b.$mobile) {
+    display: flex;
+    gap: 0.5em;
+    flex-direction: column;
+  }
 }
 
 .imageContainer {
   // background: coral;
-  border-radius: 0.25em;
+  // border-radius: 0.25em;
+  @include b.mediaQuery(b.$mobile) {
+    height: 332px;
+  }
 
   > img {
-    width: 100%;
+    width: 99%;
     height: 100%;
     display: block;
     object-fit: cover;
     border-radius: 0.25em;
-    border: 2px solid rgb(64, 11, 114);
+    border: b.$gridBorder;
+  }
+}
+
+.videContainer {
+  // border-radius: 0.25em;
+  @include b.mediaQuery(b.$mobile) {
+    height: 332px;
+  }
+
+  > iframe {
+    width: 99%;
+    height: 100%;
+    border-radius: 0.25em;
+    border: b.$gridBorder;
   }
 }
 
 .infoContainer {
+  // grid-row: 1 / span 2;
+  // grid-column: 2 / span 2;
+  grid-area: 1 / 2 / -1 / -1;
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
   flex-direction: column;
-  background: rgb(241, 241, 241);
-  grid-row: 1 / span 2;
-
-  grid-column-start: 2;
-  grid-column-end: span 2;
+  // flex-wrap: wrap;
+  overflow: hidden;
+  // background: rgb(250, 214, 13);
   // overflow-y: scroll;
   padding: 0.55em;
+  margin: 0;
   border-radius: 0.25em;
-  border: 2px solid rgb(64, 11, 114);
+  border: b.$gridBorder;
 
-  // &:nth-of-type(even) {
-  //   background-color: rgba(0, 0, 0, 0.25);
-  // }
+  p {
+    margin: 0.2em;
+  }
 
-  a {
-    // text-decoration: none;
-    // color: rgb(16, 197, 122);
+  .titleContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    > h2 {
+      margin: 0.1em 0.1em 0;
+      font-size: 1.6rem;
+    }
+
+    .categoryText {
+      padding: 0.4em 0.6em;
+      border-radius: 0.25em;
+      background: b.$main-bg;
+      font-size: 0.925rem;
+      color: b.$highlightColor;
+      // text-align: center;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      transition: all 0.4s ease-out;
+
+      &:hover {
+        color: rgb(217, 223, 251);
+        // font-weight: bold;
+        // background: rgb(183, 193, 246);
+      }
+    }
+  }
+
+  .areaText {
+    font-size: 0.925rem;
+    color: rgb(47, 47, 47);
+  }
+
+  .divider {
+    height: 1px;
+    width: 100%;
+    margin: 0.5em auto;
+    background-color: #bbb;
+  }
+
+  .favoritesBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 0.4em;
+    // font-size: 1rem;
+    padding: 0.45em 0em;
+    border: 2px solid rgb(243, 67, 13);
+    // border: b.$gridBorder;
+    // border: 2px solid b.$highlightColor;
+    border-radius: 0.25em;
+    // margin: 0.2em;
+    letter-spacing: 0.06em;
+    // background: b.$highlightColor;
+    background: rgb(241, 61, 61);
+    // color: b.$highlightColor;
+    color: white;
+    cursor: pointer;
+
+    .icon {
+      font-size: 1.12rem;
+      color: yellowgreen;
+
+      &.favorite {
+        color: yellowgreen;
+      }
+    }
   }
 
   .instructionsBtn {
-    // color: rgb(17, 17, 17);
-    // color: #902f50;
-    // font-size: 1.05rem;
-    padding: 0.4em 0.6em;
-    font-weight: bold;
-    border-radius: 0.25em;
-    border: 2px solid b.$main-bg;
-    margin: 0.2em;
-    letter-spacing: 0.04em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4em;
     cursor: pointer;
+    @include b.btnDefaults;
+
+    .icon {
+      font-size: 1.12rem;
+    }
   }
 
-  .instructions {
-    color: rebeccapurple;
+  .instructionsText {
+    color: rgb(5, 5, 5);
+    // color: rgb(3, 3, 3);
+    // color: rgb(241, 235, 212);
+    // background-color: rgb(3, 3, 3);
+    background-color: b.$recipeBackground;
+    // background-color: rgb(52, 38, 122);
+    border-radius: 0.25em;
     white-space: pre-wrap;
+    margin: 0.05em 0;
+    padding: 0.8em 0.6em;
+    line-height: 1.5;
   }
-  > h4 {
-    margin: 0.25em;
+
+  .ingredientsTitle {
+    text-align: center;
+    font-weight: normal;
+    margin: 0em auto 0.45em;
+    @include b.btnDefaults;
+    border-right: none;
+
+    > span {
+      color: b.$highlightColor;
+      letter-spacing: 0.15em;
+    }
   }
-  > p {
-    margin: 0.25em;
-  }
-  > ul {
+
+  .ingredientContainer {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     margin: 0;
-    padding: 0 1.4em;
+    padding: 0;
+    gap: 0.35em;
+
+    > li {
+      list-style: none;
+    }
+  }
+}
+
+.linkContainer {
+  display: flex;
+  justify-content: flex-start;
+  gap: 0.5em;
+
+  > h4,
+  p {
+    margin-top: 0.5em;
+  }
+
+  .linkText {
+    padding: 0.4em 0.6em;
+    margin: 0 0.25em;
+    border-radius: 0.25em;
+    background: b.$main-bg;
+    font-size: 0.925rem;
+    color: b.$highlightColor;
+    text-align: center;
+    text-decoration: none;
+    transition: color 0.4s ease-out;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+
+    &:hover {
+      color: rgb(183, 193, 246);
+    }
   }
 }

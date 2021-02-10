@@ -7,8 +7,9 @@
   border-radius: 0.25em;
   cursor: pointer;
   transition: box-shadow 0.2s ease-out, transform 0.2s ease-out;
+
   &:hover {
-    box-shadow: 0px 2px 5px 3px rgb(148, 148, 148);
+    box-shadow: b.$boxShadow;
     transform: scale(1.04);
   }
 }
@@ -16,6 +17,7 @@
 .imgContainer {
   background: rgb(198, 200, 198);
   border-radius: 0.4em 0.4em 0 0;
+  border: 1px solid b.$main-bg;
 
   > img {
     object-fit: contain;

@@ -1,18 +1,10 @@
 // variables
 $main-bg: rgb(30, 22, 69);
+$recipeBackground: rgba(30, 31, 83, 0.15);
 $highlightColor: rgb(167, 246, 167);
-$box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-  rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 $max-width: 1140px;
-
-// btn variables
-$btnText: rgb(246, 245, 245);
-$btnBg: #116914;
-$btnBorder: 4px double #b7d5d4;
-$btnHoverBg: #178c1b;
-$btnTransition: background 0.4s ease-out;
-$btnShadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
-  rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+$gridBorder: 2px solid rgb(64, 11, 114);
+$boxShadow: 0px 2px 5px 3px rgb(148, 148, 148);
 
 // breakpoints
 $big-screen: 1140px;
@@ -27,29 +19,19 @@ $small-mobile: 470px;
   }
 }
 
-@mixin buttonDefault {
-  padding: 0.5em 1em;
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: $btnText;
+@mixin btnDefaults {
+  width: 100%;
+  color: rgb(251, 251, 251);
+  background: $main-bg;
+  border: $gridBorder;
+  border-radius: 0.25em;
+  padding: 0.44em 0;
   letter-spacing: 0.06em;
-  background: $btnBg;
-  border: $btnBorder;
-  border-radius: 0.15em;
-  box-shadow: $btnShadow;
-  transition: $btnTransition;
-  cursor: pointer;
-}
-
-@mixin active {
-  &:active {
-    box-shadow: inset 0px 0px 5px #d8dddf;
-  }
 }
 
 html {
-  line-height: 1.15; /* 1 */
-  -webkit-text-size-adjust: 100%; /* 2 */
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {

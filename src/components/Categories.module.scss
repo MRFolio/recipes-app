@@ -18,11 +18,5 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   grid-gap: 0.25rem;
-  //   -webkit-overflow-scrolling: touch;
-  //   -ms-overflow-style: -ms-autohiding-scrollbar;
-
-  //   &::-webkit-scrollbar {
-  //     display: none;
-  //   }
-  //   background: red;
+  overflow: hidden;
 }

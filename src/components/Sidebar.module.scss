@@ -6,10 +6,11 @@
   height: 100%;
   display: grid;
   place-items: center;
-  visibility: hidden;
+  // visibility: hidden;
+  visibility: show;
   z-index: -1;
   transition: var(--transition);
-  transform: scale(0);
+  // transform: scale(0);
   background: rgba(0, 0, 0, 0.5);
 
   &.show {

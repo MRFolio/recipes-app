@@ -33,8 +33,8 @@ const CategoryMeals = memo(
 
       return (
         <>
-          {categoryMeals?.map((meal: ICategoryMeal) => (
-            <CategoryMeal key={meal.id} {...meal} />
+          {categoryMeals?.map((meal: ICategoryMeal, index: number) => (
+            <CategoryMeal key={meal.id} {...meal} index={index} />
           ))}
         </>
       );
