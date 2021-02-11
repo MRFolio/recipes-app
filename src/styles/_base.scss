@@ -1,6 +1,6 @@
 // variables
 $main-bg: rgb(30, 22, 69);
-$recipeBackground: rgba(30, 31, 83, 0.15);
+$recipeBackground: rgba(30, 31, 83, 0.14);
 $highlightColor: rgb(167, 246, 167);
 $max-width: 1140px;
 $gridBorder: 2px solid rgb(64, 11, 114);
@@ -22,8 +22,6 @@ $small-mobile: 470px;
 @mixin btnDefaults {
   width: 100%;
   color: rgb(251, 251, 251);
-  background: $main-bg;
-  border: $gridBorder;
   border-radius: 0.25em;
   padding: 0.44em 0;
   letter-spacing: 0.06em;

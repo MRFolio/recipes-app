@@ -9,6 +9,7 @@ const urlRecipeBySearchName: string =
   'https://www.themealdb.com/api/json/v1/1/search.php?s=';
 
 interface IFetchedRecipe {
+  idMeal: string;
   strMeal: string;
   strCategory: string;
   strArea: string;
@@ -40,6 +41,7 @@ export const loadRecipeById = createAsyncThunk(
     const response = await fetch(urlRecipeById + id);
     const { meals } = await response.json();
     const {
+      idMeal,
       strMeal: meal,
       strCategory: category,
       strArea: area,
@@ -96,6 +98,7 @@ export const loadRecipeById = createAsyncThunk(
     );
 
     const formatedRecipe: IRecipe = {
+      idMeal,
       meal,
       category,
       area,
@@ -115,8 +118,8 @@ export const loadRecipeBySearchInput = createAsyncThunk(
   'recipes/loadRecipeBySearchInput',
   async (searchInput: string) => {
     const response = await fetch(urlRecipeBySearchName + searchInput);
-    const data = await response.json();
-    return data;
+    const { meals } = await response.json();
+    return meals;
   }
 );
 
@@ -124,23 +127,49 @@ export const loadRecipeBySearchInput = createAsyncThunk(
 // pärast type folderisse
 
 interface RecipesState {
-  recipes: IRecipe[];
+  searchedRecipes: IRecipe[];
   isLoading: boolean;
   hasError: boolean;
   selectedRecipe?: IRecipe;
+  favoritedRecipes?: IRecipe[];
 }
 
+const getFavoritesLocalStorage = () => {
+  return JSON.parse(localStorage.getItem('favorites') || '{}');
+  // const favorites = localStorage.getItem('favorites')
+  // return favorites !== null
+  //   ? JSON.parse(favorites)
+  //   : [];
+};
+
 const initialState /* : RecipesState */ = {
-  recipes: [],
+  searchedRecipes: [],
   isLoading: false,
   hasError: false,
   selectedRecipe: undefined,
+  favoritedRecipes: [] /* getFavoritesLocalStorage() */,
 } as RecipesState;
 
 const recipesSlice = createSlice({
   name: 'recipes',
   initialState,
   reducers: {
+    addToFavorites(state, { payload }: PayloadAction<IRecipe>) {
+      // const test = state.favoritedRecipes.map((item)=>)
+      // [...state.favoritedRecipes, { payload }];
+      state.favoritedRecipes?.push(payload);
+      localStorage.setItem('favorites', JSON.stringify(payload));
+    },
+    removeFromFavorites(state, { payload }: PayloadAction<string>) {
+      // state.favoritedRecipes?.filter((recipe) => recipe.idMeal !== payload);
+      const index = state.favoritedRecipes!.findIndex(
+        (recipe) => recipe.idMeal === payload
+      );
+      if (index !== -1) {
+        state.favoritedRecipes!.splice(index, 1);
+      }
+    },
+
     // setSelectedRecipe(state, { payload }: PayloadAction<any>) {
     //   state.selectedRecipe = payload;
     // },
@@ -170,7 +199,7 @@ const recipesSlice = createSlice({
     builder.addCase(
       loadRecipeBySearchInput.fulfilled,
       (state, { payload }: PayloadAction<IRecipe[]>) => {
-        state.recipes = payload;
+        state.searchedRecipes = payload;
         state.isLoading = false;
         state.hasError = false;
       }
@@ -183,7 +212,7 @@ const recipesSlice = createSlice({
 });
 
 //actions
-// export const { setSelectedRecipe } = recipesSlice.actions;
+export const { addToFavorites, removeFromFavorites } = recipesSlice.actions;
 
 //selectors
 export const selectSelectedRecipe = (state: RootState) =>

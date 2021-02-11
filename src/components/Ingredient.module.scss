@@ -2,14 +2,13 @@
 
 .figureContainer {
   margin: 0 auto;
-  // display: grid;
-  // place-items: center;
-  background: rgba(30, 31, 83, 0.15);
+  background: b.$recipeBackground;
   border-radius: 0.25em;
   border: 1px solid b.$main-bg;
+  max-width: 176px;
 
   .image {
-    object-fit: contain;
+    object-fit: cover;
     width: 100%;
     height: 100%;
     display: block;
@@ -21,7 +20,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1rem;
+    font-size: 0.925rem;
     text-align: center;
     text-transform: capitalize;
     letter-spacing: 0.04em;
@@ -29,7 +28,7 @@
     color: #e7e3e3;
     background: b.$main-bg;
     margin: 0 auto;
-    padding: 0.4em 0.3em 0.25em;
+    padding: 0.35em 0.3em 0.25em;
     border-radius: 0 0 0.2em 0.2em;
     min-height: 36px;
   }

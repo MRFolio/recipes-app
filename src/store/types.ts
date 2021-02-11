@@ -13,6 +13,7 @@ export interface ICategoryMeal {
 export type IIngredients = (string | undefined)[];
 
 export interface IRecipe {
+  idMeal: string;
   meal: string;
   category?: string;
   area?: string;

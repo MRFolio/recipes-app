@@ -2,7 +2,7 @@
 
 .container {
   display: grid;
-  grid-template-columns: 2fr 3fr;
+  grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, 332px) 1fr;
   gap: 1em;
   margin: 0.25em 0.5em;
@@ -32,7 +32,7 @@
   }
 }
 
-.videContainer {
+.videoContainer {
   // border-radius: 0.25em;
   @include b.mediaQuery(b.$mobile) {
     height: 332px;
@@ -72,6 +72,7 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    gap: 0.25em;
 
     > h2 {
       margin: 0.1em 0.1em 0;
@@ -109,34 +110,44 @@
     background-color: #bbb;
   }
 
+  .ingredientsTitle {
+    text-align: center;
+    font-weight: normal;
+    margin: 0em auto 0.44em;
+    @include b.btnDefaults;
+    padding: 0.5em 0;
+    background: b.$main-bg;
+
+    > span {
+      color: b.$highlightColor;
+      letter-spacing: 0.15em;
+    }
+  }
+
+  .ingredientContainer {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(126px, 1fr));
+    margin: 0;
+    padding: 0;
+    gap: 0.35em;
+
+    > li {
+      list-style: none;
+    }
+  }
+
   .favoritesBtn {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
     gap: 0.4em;
-    // font-size: 1rem;
-    padding: 0.45em 0em;
+    @include b.btnDefaults;
     border: 2px solid rgb(243, 67, 13);
-    // border: b.$gridBorder;
-    // border: 2px solid b.$highlightColor;
-    border-radius: 0.25em;
-    // margin: 0.2em;
-    letter-spacing: 0.06em;
-    // background: b.$highlightColor;
     background: rgb(241, 61, 61);
     // color: b.$highlightColor;
     color: white;
     cursor: pointer;
-
-    .icon {
-      font-size: 1.12rem;
-      color: yellowgreen;
-
-      &.favorite {
-        color: yellowgreen;
-      }
-    }
   }
 
   .instructionsBtn {
@@ -144,6 +155,9 @@
     align-items: center;
     justify-content: center;
     gap: 0.4em;
+    background: b.$main-bg;
+    background: #255d79;
+    border: 2px solid #255d79;
     cursor: pointer;
     @include b.btnDefaults;
 
@@ -164,32 +178,6 @@
     margin: 0.05em 0;
     padding: 0.8em 0.6em;
     line-height: 1.5;
-  }
-
-  .ingredientsTitle {
-    text-align: center;
-    font-weight: normal;
-    margin: 0em auto 0.45em;
-    @include b.btnDefaults;
-    border-right: none;
-
-    > span {
-      color: b.$highlightColor;
-      letter-spacing: 0.15em;
-    }
-  }
-
-  .ingredientContainer {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    margin: 0;
-    padding: 0;
-    gap: 0.35em;
-
-    > li {
-      list-style: none;
-    }
   }
 }
 
