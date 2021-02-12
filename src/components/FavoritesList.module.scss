@@ -1,0 +1,64 @@
+@use "../styles/base" as b;
+
+.heading {
+  background: b.$main-bg;
+  color: white;
+  margin: 0em auto;
+  padding: 0.55em;
+  text-align: center;
+  letter-spacing: 0.04em;
+
+  > span {
+    color: b.$highlightColor;
+  }
+}
+
+.btnContainer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.4em;
+  color: rgb(255, 255, 255);
+  letter-spacing: 0.06em;
+  padding: 0.33em 0.75em;
+  margin: 0em auto 0.05em;
+  background: #918ef4;
+  border-top: b.$doubleBorder;
+  border-bottom: b.$doubleBorder;
+
+  .categoryBtn {
+    font-size: 0.925rem;
+    color: black;
+    letter-spacing: 0.05em;
+    background: rgb(248, 248, 248);
+    padding: 0.4em 0.9em;
+    border-radius: 1em;
+    border: 1px solid b.$main-bg;
+    text-align: center;
+    transition: color 0.3s ease-out, background 0.3s ease-out;
+    cursor: pointer;
+
+    &.selected {
+      background: b.$main-bg;
+      color: rgb(251, 251, 251);
+    }
+
+    &:hover:not(.selected) {
+      background: b.$highlightColor;
+      border: 1px solid rgb(16, 83, 16);
+    }
+  }
+}
+
+.mealContainer {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(216px, 1fr));
+  gap: 0.35em;
+  overflow: hidden;
+
+  @include b.mediaQuery(b.$mobile) {
+    gap: 0.75em;
+  }
+}

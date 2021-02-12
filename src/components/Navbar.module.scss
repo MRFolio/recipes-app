@@ -1,16 +1,13 @@
 @use "../styles/base" as b;
 
 .header {
-  // position: static;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  // gap: 0.4em;
   padding: 0.75em;
   background: b.$main-bg;
   letter-spacing: 0.1em;
-  // box-shadow: 0px 0px 2px 2px rgb(0, 0, 0);
-  border-bottom: 4px double rgb(198, 200, 198);
+  border-bottom: b.$doubleBorder;
 
   @media only screen and (min-width: 1880px) {
     justify-content: space-around;

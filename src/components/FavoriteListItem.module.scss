@@ -1,0 +1,50 @@
+@use "../styles/base" as b;
+
+.card {
+  background: #ede7f6;
+  padding: 0.75em;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease-out;
+
+  .imageContainer {
+    margin: 0 auto;
+    border: 1px solid b.$main-bg;
+    border-radius: 0.4em;
+    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+    position: relative;
+
+    &:hover {
+      transform: scale(1.03);
+      box-shadow: b.$itemBoxShadow;
+
+      &:after {
+        @include b.afterElement;
+      }
+    }
+
+    .image {
+      object-fit: contain;
+      width: 100%;
+      height: 100%;
+      display: block;
+      border-radius: 0.4em 0.4em 0 0;
+    }
+
+    .caption {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 1rem;
+      text-transform: capitalize;
+      letter-spacing: 0.04em;
+      font-weight: bold;
+      color: #e7e3e3;
+      background: b.$main-bg;
+      margin: 0;
+      padding: 0.3em;
+      min-height: 40px;
+      border-radius: 0 0 0.3em 0.3em;
+    }
+  }
+}

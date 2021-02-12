@@ -1,26 +1,25 @@
 @use "../styles/base" as b;
 
 .container {
-  //   flex: 0 0 auto;
   background: #ede7f6;
-  padding: 0.5em;
+  padding: 0.65em;
   border-radius: 0.25em;
   cursor: pointer;
   transition: box-shadow 0.2s ease-out, transform 0.2s ease-out;
 
   &:hover {
-    box-shadow: b.$boxShadow;
+    box-shadow: b.$itemBoxShadow;
     transform: scale(1.04);
   }
 }
 
 .imgContainer {
-  background: rgb(198, 200, 198);
+  background: b.$recipeBackground;
   border-radius: 0.4em 0.4em 0 0;
   border: 1px solid b.$main-bg;
+  // border-bottom: none;
 
   > img {
-    object-fit: contain;
     height: 100%;
     width: 100%;
     display: block;
@@ -29,20 +28,13 @@
 }
 
 .heading {
-  font-size: 1.1rem;
+  font-size: 1.06rem;
   text-transform: capitalize;
   letter-spacing: 0.03em;
   text-align: center;
   color: rgb(231, 227, 227);
   background: b.$main-bg;
   margin: 0;
-  padding: 0.3em;
+  padding: 0.34em;
   border-radius: 0 0 0.4em 0.4em;
 }
-
-// .card:hover,
-// .card:focus,
-// .card:active {
-//   color: #0070f3;
-//   border-color: #0070f3;
-// }

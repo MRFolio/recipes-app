@@ -17,22 +17,22 @@ interface IFetchedRecipe {
   strMealThumb: string;
   strYoutube: string;
   strSource: string;
-  strIngredient1?: string;
-  strIngredient2?: string;
-  strIngredient3?: string;
-  strIngredient4?: string;
-  strIngredient5?: string;
-  strIngredient6?: string;
-  strIngredient7?: string;
-  strIngredient8?: string;
-  strMeasure1?: string;
-  strMeasure2?: string;
-  strMeasure3?: string;
-  strMeasure4?: string;
-  strMeasure5?: string;
-  strMeasure6?: string;
-  strMeasure7?: string;
-  strMeasure8?: string;
+  strIngredient1: string;
+  strIngredient2: string;
+  strIngredient3: string;
+  strIngredient4: string;
+  strIngredient5: string;
+  strIngredient6: string;
+  strIngredient7: string;
+  strIngredient8: string;
+  strMeasure1: string;
+  strMeasure2: string;
+  strMeasure3: string;
+  strMeasure4: string;
+  strMeasure5: string;
+  strMeasure6: string;
+  strMeasure7: string;
+  strMeasure8: string;
 }
 
 export const loadRecipeById = createAsyncThunk(
@@ -131,15 +131,12 @@ interface RecipesState {
   isLoading: boolean;
   hasError: boolean;
   selectedRecipe?: IRecipe;
-  favoritedRecipes?: IRecipe[];
+  favoritedRecipes: IRecipe[];
 }
 
 const getFavoritesLocalStorage = () => {
-  return JSON.parse(localStorage.getItem('favorites') || '{}');
-  // const favorites = localStorage.getItem('favorites')
-  // return favorites !== null
-  //   ? JSON.parse(favorites)
-  //   : [];
+  const favorites = localStorage.getItem('favorites');
+  return favorites ? JSON.parse(favorites) : [];
 };
 
 const initialState /* : RecipesState */ = {
@@ -147,7 +144,7 @@ const initialState /* : RecipesState */ = {
   isLoading: false,
   hasError: false,
   selectedRecipe: undefined,
-  favoritedRecipes: [] /* getFavoritesLocalStorage() */,
+  favoritedRecipes: getFavoritesLocalStorage(),
 } as RecipesState;
 
 const recipesSlice = createSlice({
@@ -155,24 +152,17 @@ const recipesSlice = createSlice({
   initialState,
   reducers: {
     addToFavorites(state, { payload }: PayloadAction<IRecipe>) {
-      // const test = state.favoritedRecipes.map((item)=>)
-      // [...state.favoritedRecipes, { payload }];
+      // const newArray = [...state.favoritedRecipes];
       state.favoritedRecipes?.push(payload);
-      localStorage.setItem('favorites', JSON.stringify(payload));
+      localStorage.setItem('favorites', JSON.stringify(state.favoritedRecipes));
     },
     removeFromFavorites(state, { payload }: PayloadAction<string>) {
-      // state.favoritedRecipes?.filter((recipe) => recipe.idMeal !== payload);
-      const index = state.favoritedRecipes!.findIndex(
-        (recipe) => recipe.idMeal === payload
+      const filteredList = state.favoritedRecipes?.filter(
+        (recipe) => recipe.idMeal !== payload
       );
-      if (index !== -1) {
-        state.favoritedRecipes!.splice(index, 1);
-      }
+      state.favoritedRecipes = filteredList;
+      localStorage.setItem('favorites', JSON.stringify(state.favoritedRecipes));
     },
-
-    // setSelectedRecipe(state, { payload }: PayloadAction<any>) {
-    //   state.selectedRecipe = payload;
-    // },
   },
   extraReducers: (builder) => {
     builder.addCase(loadRecipeById.pending, (state) => {
@@ -219,5 +209,7 @@ export const selectSelectedRecipe = (state: RootState) =>
   state.recipes.selectedRecipe;
 export const selectIsLoading = (state: RootState) => state.recipes.isLoading;
 export const selectHasError = (state: RootState) => state.recipes.hasError;
+export const selectFavoritedRecipes = (state: RootState) =>
+  state.recipes.favoritedRecipes;
 
 export default recipesSlice.reducer;

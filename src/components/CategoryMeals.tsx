@@ -11,12 +11,6 @@ import CategoryMeal from './CategoryMeal';
 import styles from './CategoryMeals.module.scss';
 import Spinner from './Spinner';
 
-interface CategoryMealsProps {
-  id: string;
-  meal: string;
-  img: string;
-}
-
 const CategoryMeals = memo(
   (): JSX.Element => {
     const category = useSelector(selectSelectedCategory);

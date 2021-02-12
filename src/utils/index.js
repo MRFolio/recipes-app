@@ -4,6 +4,7 @@ import {
   delayVariantsFaster,
   element1Variant,
   element2Variant,
+  favoriteVariants,
   pageTransition,
   pageVariants,
   paragraphTransition,
@@ -29,4 +30,5 @@ export {
   element1Variant,
   element2Variant,
   transitionItems,
+  favoriteVariants,
 };

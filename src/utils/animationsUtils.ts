@@ -23,7 +23,14 @@ export const paragraphVariants = {
 export const paragraphTransition = {
   transition: 'tween',
   ease: 'anticipate',
-  duration: 0.75,
+  duration: 0.65,
+};
+
+// favorite animation
+
+export const favoriteVariants = {
+  hidden: { opacity: 0, y: 25 },
+  visible: { opacity: 1, y: 0 },
 };
 
 // categories animation
@@ -43,8 +50,8 @@ export const element1Variant = {
   show: { opacity: 1, scale: 1 },
 };
 export const element2Variant = {
-  hidden: { opacity: 0, x: 0, scale: 0.5 },
-  show: { opacity: 1, x: 0, scale: 1 },
+  hidden: { opacity: 0, scale: 0.5 },
+  show: { opacity: 1, scale: 1 },
 };
 
 export const transitionItems = {

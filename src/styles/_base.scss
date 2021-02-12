@@ -3,8 +3,13 @@ $main-bg: rgb(30, 22, 69);
 $recipeBackground: rgba(30, 31, 83, 0.14);
 $highlightColor: rgb(167, 246, 167);
 $max-width: 1140px;
-$gridBorder: 2px solid rgb(64, 11, 114);
-$boxShadow: 0px 2px 5px 3px rgb(148, 148, 148);
+$gridBorder: 1px solid rgb(64, 11, 114);
+$doubleBorder: 4px double rgb(198, 200, 198);
+$itemBoxShadow: 0px 2px 5px 3px rgb(148, 148, 148);
+$paperBoxShadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+  rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+$bgColorBtn: #3a7d5c;
+$btnSecondary: #255d79;
 
 // breakpoints
 $big-screen: 1140px;
@@ -25,6 +30,21 @@ $small-mobile: 470px;
   border-radius: 0.25em;
   padding: 0.44em 0;
   letter-spacing: 0.06em;
+}
+
+@mixin afterElement {
+  position: absolute;
+  top: 0.05em;
+  right: 0.05em;
+  content: '\2606';
+  text-align: center;
+  font-size: 1.5rem;
+  width: 30px;
+  height: 30px;
+  border-radius: 0.5em;
+  background: $main-bg;
+  color: rgb(251, 251, 251);
+  z-index: 15;
 }
 
 html {

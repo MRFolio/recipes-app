@@ -3,7 +3,7 @@
 .heading {
   background: b.$main-bg;
   color: white;
-  margin: 0em auto 0.1em;
+  margin: 0em auto 0.05em;
   padding: 0.55em;
   text-align: center;
   letter-spacing: 0.04em;
@@ -16,7 +16,8 @@
 .container {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  grid-gap: 0.25rem;
+  grid-template-columns: repeat(auto-fill, minmax(186px, 1fr));
+  grid-gap: 0.28rem;
   overflow: hidden;
+  padding: 0 1em 1em 0em;
 }

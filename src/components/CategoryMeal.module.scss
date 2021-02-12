@@ -3,13 +3,13 @@
 .card {
   background: #ede7f6;
   // padding: 0.4em 0.75em;
-  padding: 0.55em;
+  padding: 0.75em;
   border-radius: 0.25em;
   cursor: pointer;
   transition: box-shadow 0.2s ease-out;
 
   &:hover {
-    box-shadow: b.$boxShadow;
+    box-shadow: b.$itemBoxShadow;
   }
 }
 
@@ -18,13 +18,17 @@
   border: 1px solid b.$main-bg;
   border-radius: 0.4em;
   transition: transform 0.2s ease-out;
+  position: relative;
 
   &:hover {
     transform: scale(1.03);
+
+    &:after {
+      @include b.afterElement;
+    }
   }
 
   .image {
-    object-fit: contain;
     width: 100%;
     height: 100%;
     display: block;

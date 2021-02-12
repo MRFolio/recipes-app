@@ -22,11 +22,12 @@ const CategoryMeal = memo(
     return (
       <Link to={`/recipes/${id}`} style={{ textDecoration: 'inherit' }}>
         <motion.article
-          /* onClick={handleClick} */ className={styles.card}
+          className={styles.card}
           custom={index}
           initial="hidden"
           animate="visible"
           variants={delayVariantsFaster}
+          title={`Click to see details of ${meal}`}
         >
           <figure className={styles.imageContainer}>
             <img src={img} alt={`${meal} preview`} className={styles.image} />

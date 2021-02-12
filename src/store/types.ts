@@ -10,7 +10,7 @@ export interface ICategoryMeal {
   img: string;
 }
 
-export type IIngredients = (string | undefined)[];
+export type IIngredients = string[];
 
 export interface IRecipe {
   idMeal: string;
@@ -21,6 +21,6 @@ export interface IRecipe {
   img?: string;
   linkYT?: string;
   linkWeb?: string;
-  ingredients?: (string | undefined)[];
-  ingredientMeasures?: (string | undefined)[];
+  ingredients?: string[];
+  ingredientMeasures?: string[];
 }
