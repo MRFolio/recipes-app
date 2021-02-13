@@ -7,8 +7,8 @@ import {
   selectSelectedCategoryMeals,
 } from '../store/categoriesSlice';
 import { ICategoryMeal } from '../store/types';
-import CategoryMeal from './CategoryMeal';
 import styles from './CategoryMeals.module.scss';
+import CategoryMeal from './SingleMeal';
 import Spinner from './Spinner';
 
 const CategoryMeals = memo(

@@ -123,9 +123,6 @@ export const loadRecipeBySearchInput = createAsyncThunk(
   }
 );
 
-// localhost favorite recipes
-// pärast type folderisse
-
 interface RecipesState {
   searchedRecipes: IRecipe[];
   isLoading: boolean;
@@ -211,5 +208,7 @@ export const selectIsLoading = (state: RootState) => state.recipes.isLoading;
 export const selectHasError = (state: RootState) => state.recipes.hasError;
 export const selectFavoritedRecipes = (state: RootState) =>
   state.recipes.favoritedRecipes;
+export const selectSearchedRecipes = (state: RootState) =>
+  state.recipes.searchedRecipes;
 
 export default recipesSlice.reducer;

@@ -2,22 +2,27 @@ import { motion } from 'framer-motion';
 import { memo, MouseEvent } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { delayVariantsFaster } from '../utils';
-import styles from './CategoryMeal.module.scss';
+import styles from './SingleMeal.module.scss';
 
-interface ICategoryMealProps {
-  id: string;
+interface IMealProps {
+  id?: string;
+  idMeal?: string;
   meal: string;
-  img: string;
+  img?: string;
   index: number;
 }
 
-const CategoryMeal = memo(
-  ({ id, meal, img, index }: ICategoryMealProps): JSX.Element => {
+const SingleMeal = memo(
+  ({ id, idMeal, meal, img, index }: IMealProps): JSX.Element => {
     const history = useHistory();
 
     const handleClick = (e: MouseEvent<HTMLElement>) => {
       history.push(`/recipes/${id}`);
     };
+
+    if (!id) {
+      id = idMeal;
+    }
 
     return (
       <Link to={`/recipes/${id}`} style={{ textDecoration: 'inherit' }}>
@@ -39,4 +44,4 @@ const CategoryMeal = memo(
   }
 );
 
-export default CategoryMeal;
+export default SingleMeal;
