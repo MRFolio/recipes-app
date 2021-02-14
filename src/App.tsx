@@ -5,6 +5,7 @@ import {
   Error,
   Favorites,
   Home,
+  SearchResults,
   SingleCategory,
   SingleRecipe,
 } from './views';
@@ -18,6 +19,7 @@ const App = () => {
         <Route exact path="/" component={Home} />
         <Route exact path="/about" component={About} />
         <Route exact path="/favorites" component={Favorites} />
+        <Route exact path="/search-results/:query" component={SearchResults} />
         <Route exact path="/recipes/:id" component={SingleRecipe} />
         <Route exact path="/category/:category" component={SingleCategory} />
         <Route path="*" component={Error} />

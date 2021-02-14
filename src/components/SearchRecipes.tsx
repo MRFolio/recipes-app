@@ -4,7 +4,7 @@ import {
   selectIsLoading,
   selectSearchedRecipes,
 } from '../store/recipesSlice';
-import { IRecipe } from '../store/types';
+import { ISingleMeal } from '../store/types';
 import styles from './SearchRecipes.module.scss';
 import SingleMeal from './SingleMeal';
 import Spinner from './Spinner';
@@ -18,13 +18,13 @@ const SearchRecipes = (): JSX.Element => {
     if (loading) return <Spinner />;
 
     if (hasError || !searchedRecipes) {
-      return <p>Cannot display recipes...</p>;
+      return <p className={styles.errorParagraph}>Cannot display recipes...</p>;
     }
 
     return (
       <>
-        {searchedRecipes?.map((meal: IRecipe, index: number) => (
-          <SingleMeal key={meal.idMeal} {...meal} index={index} />
+        {searchedRecipes?.map((recipe: ISingleMeal, index: number) => (
+          <SingleMeal key={recipe.id} {...recipe} index={index} />
         ))}
       </>
     );
@@ -33,7 +33,7 @@ const SearchRecipes = (): JSX.Element => {
   return (
     <>
       <h3 className={styles.heading}>
-        Your search results<span>{searchedRecipes.length}</span>:
+        Your search results <span>({searchedRecipes?.length})</span>:
       </h3>
       <section className={styles.container}>{renderSearchRecipes()}</section>
     </>

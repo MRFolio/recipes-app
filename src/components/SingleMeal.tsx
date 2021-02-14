@@ -5,24 +5,19 @@ import { delayVariantsFaster } from '../utils';
 import styles from './SingleMeal.module.scss';
 
 interface IMealProps {
-  id?: string;
-  idMeal?: string;
+  id: string;
   meal: string;
-  img?: string;
+  img: string;
   index: number;
 }
 
 const SingleMeal = memo(
-  ({ id, idMeal, meal, img, index }: IMealProps): JSX.Element => {
+  ({ id, meal, img, index }: IMealProps): JSX.Element => {
     const history = useHistory();
 
     const handleClick = (e: MouseEvent<HTMLElement>) => {
       history.push(`/recipes/${id}`);
     };
-
-    if (!id) {
-      id = idMeal;
-    }
 
     return (
       <Link to={`/recipes/${id}`} style={{ textDecoration: 'inherit' }}>

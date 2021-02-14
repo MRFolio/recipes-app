@@ -4,10 +4,16 @@ export interface ICategory {
   img: string;
 }
 
-export interface ICategoryMeal {
+export interface ISingleMeal {
   id: string;
   meal: string;
   img: string;
+}
+
+export interface IFetchedMeals {
+  idMeal: string;
+  strMeal: string;
+  strMealThumb: string;
 }
 
 export type IIngredients = string[];

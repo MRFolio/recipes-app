@@ -1,5 +1,9 @@
 @use "../styles/base" as b;
 
+.errorParagraph {
+  margin-left: 0.5em;
+}
+
 .container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);

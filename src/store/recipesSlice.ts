@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { filterEmptyItems } from '../utils/recipeSliceHelper';
 import { RootState } from './store';
-import { IIngredients, IRecipe } from './types';
+import { IFetchedMeals, IIngredients, IRecipe, ISingleMeal } from './types';
 
 const urlRecipeById: string =
   'https://www.themealdb.com/api/json/v1/1/lookup.php?i=';
@@ -119,12 +119,19 @@ export const loadRecipeBySearchInput = createAsyncThunk(
   async (searchInput: string) => {
     const response = await fetch(urlRecipeBySearchName + searchInput);
     const { meals } = await response.json();
-    return meals;
+    const formatedMeals: ISingleMeal[] = meals.map(
+      ({ idMeal: id, strMeal: meal, strMealThumb: img }: IFetchedMeals) => ({
+        id,
+        meal,
+        img,
+      })
+    );
+    return formatedMeals;
   }
 );
 
 interface RecipesState {
-  searchedRecipes: IRecipe[];
+  searchedRecipes: IFetchedMeals[];
   isLoading: boolean;
   hasError: boolean;
   selectedRecipe?: IRecipe;
@@ -185,7 +192,7 @@ const recipesSlice = createSlice({
     });
     builder.addCase(
       loadRecipeBySearchInput.fulfilled,
-      (state, { payload }: PayloadAction<IRecipe[]>) => {
+      (state, { payload }: PayloadAction<ISingleMeal[]>) => {
         state.searchedRecipes = payload;
         state.isLoading = false;
         state.hasError = false;

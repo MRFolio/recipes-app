@@ -1,64 +1,13 @@
 // import { Button, Grid, Paper, Typography } from '@material-ui/core';
 // import { makeStyles } from '@material-ui/core/styles';
 // import { ArrowBack } from '@material-ui/icons';
-import { useHistory } from 'react-router-dom';
 import BackButton from '../components/BackButton';
 
-// const useStyles = makeStyles((theme) => ({
-//   container: {
-//     minHeight: '93vh',
-//   },
-//   paper: {
-//     display: 'grid',
-//     placeItems: 'center',
-//     height: 176,
-//     width: 500,
-//     marginBottom: theme.spacing(15),
-//     padding: theme.spacing(3),
-//     whiteSpace: 'nowrap',
-//     [theme.breakpoints.only('xs')]: {
-//       width: '94vw',
-//     },
-//   },
-// }));
-
-const Error = (): JSX.Element => {
-  // const classes = useStyles();
-  const history = useHistory();
-
-  const handleClick = () => history.goBack();
-
-  return (
-    <>
-      <h4>Nothing to see here</h4>
-      <BackButton />
-    </>
-    // <Grid
-    //   container
-    //   direction="column"
-    //   alignItems="center"
-    //   justify="center"
-    //   component="section"
-    //   className={classes.container}
-    // >
-    //   <Paper elevation={2} className={classes.paper}>
-    //     <Typography variant="h5" component="p">
-    //       Sorry, no matching page!
-    //     </Typography>
-    //     <Button
-    //       onClick={handleClick}
-    //       size="large"
-    //       type="button"
-    //       variant="contained"
-    //       color="primary"
-    //       startIcon={<ArrowBack />}
-    //       aria-label="Go back"
-    //     >
-    //       Go back
-    //     </Button>
-    //   </Paper>
-    // </Grid>
-  );
-};
+const Error = (): JSX.Element => (
+  <>
+    <p style={{ marginLeft: '0.5em' }}>Nothing to see here.</p>
+    <BackButton />
+  </>
+);
 
 export default Error;

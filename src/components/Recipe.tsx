@@ -33,7 +33,7 @@ const Recipe = (): JSX.Element => {
   if (loading) return <Spinner />;
 
   if (hasError || !recipe) {
-    return <h2 className="section-title">No recipe to display</h2>;
+    return <p className={styles.errorParagraph}>No recipe to display!</p>;
   }
 
   return (

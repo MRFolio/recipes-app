@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { getLocalStorage } from '../utils/localStorageHelper';
 import { RootState } from './store';
-import { ICategory, ICategoryMeal } from './types';
+import { ICategory, IFetchedMeals, ISingleMeal } from './types';
 
 const urlAllCategories: string =
   'https://www.themealdb.com/api/json/v1/1/categories.php';
@@ -39,18 +39,12 @@ export const getCategories = createAsyncThunk(
   }
 );
 
-interface IFetchedMeals {
-  idMeal: string;
-  strMeal: string;
-  strMealThumb: string;
-}
-
 export const getCategoryMeals = createAsyncThunk(
   'categories/getCategoryMeals',
   async (category: string) => {
     const response = await fetch(urlCategoryMeals + category);
     const { meals } = await response.json();
-    const formatedMeals: ICategoryMeal[] = meals
+    const formatedMeals: ISingleMeal[] = meals
       /* .sort((a: FetchedMeals, b: FetchedMeals) =>
         a.strMeal.localeCompare(b.strMeal)
       ) */
@@ -70,7 +64,7 @@ interface CategoriesState {
   isLoading: boolean;
   hasError: boolean;
   selectedCategory: string | null;
-  selectedCategoryMeals?: ICategoryMeal[];
+  selectedCategoryMeals?: ISingleMeal[];
 }
 
 const initialState: CategoriesState = {
@@ -113,7 +107,7 @@ const categoriesSlice = createSlice({
     });
     builder.addCase(
       getCategoryMeals.fulfilled,
-      (state, { payload }: PayloadAction<ICategoryMeal[]>) => {
+      (state, { payload }: PayloadAction<ISingleMeal[]>) => {
         state.selectedCategoryMeals = payload;
         state.isLoading = false;
         state.hasError = false;

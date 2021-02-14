@@ -1,5 +1,9 @@
 @use "../styles/base" as b;
 
+.errorParagraph {
+  margin-left: 0.5em;
+}
+
 .heading {
   background: b.$main-bg;
   color: white;

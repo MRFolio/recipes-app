@@ -17,7 +17,10 @@ const Categories = (): JSX.Element => {
 
   const renderCategories = () => {
     if (isLoading) return <Spinner />;
-    if (hasError) return <p>Cannot display categories...</p>;
+    if (hasError)
+      return (
+        <p className={styles.errorParagraph}>Cannot display categories...</p>
+      );
 
     return (
       <>

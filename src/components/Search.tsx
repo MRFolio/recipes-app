@@ -17,13 +17,11 @@ const Search = (): JSX.Element => {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
-    console.log('tereForm');
     if (query) {
       dispatch(loadRecipeBySearchInput(query));
       setQuery('');
+      history.push(`/search-results/${query}`);
     }
-
-    // history.push('./recipes');
   };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
@@ -31,7 +29,7 @@ const Search = (): JSX.Element => {
   };
 
   const handeClick = (e: MouseEvent<HTMLButtonElement>): void => {
-    console.log('tere');
+    // console.log('tere');
   };
 
   return (

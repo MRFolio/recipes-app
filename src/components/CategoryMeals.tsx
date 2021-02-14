@@ -6,7 +6,7 @@ import {
   selectSelectedCategory,
   selectSelectedCategoryMeals,
 } from '../store/categoriesSlice';
-import { ICategoryMeal } from '../store/types';
+import { ISingleMeal } from '../store/types';
 import styles from './CategoryMeals.module.scss';
 import CategoryMeal from './SingleMeal';
 import Spinner from './Spinner';
@@ -27,7 +27,7 @@ const CategoryMeals = memo(
 
       return (
         <>
-          {categoryMeals?.map((meal: ICategoryMeal, index: number) => (
+          {categoryMeals?.map((meal: ISingleMeal, index: number) => (
             <CategoryMeal key={meal.id} {...meal} index={index} />
           ))}
         </>
