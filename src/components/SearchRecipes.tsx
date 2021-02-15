@@ -31,12 +31,12 @@ const SearchRecipes = (): JSX.Element => {
   };
 
   return (
-    <>
+    <section>
       <h3 className={styles.heading}>
         Your search results <span>({searchedRecipes?.length})</span>:
       </h3>
-      <section className={styles.container}>{renderSearchRecipes()}</section>
-    </>
+      <div className={styles.recipesContainer}>{renderSearchRecipes()}</div>
+    </section>
   );
 };
 

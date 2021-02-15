@@ -18,12 +18,10 @@
   }
 }
 
-.container {
-  width: 100%;
+.recipesContainer {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(216px, 1fr));
   gap: 0.35em;
-  overflow: hidden;
   padding-bottom: 1em;
 
   @include b.mediaQuery(b.$mobile) {

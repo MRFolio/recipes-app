@@ -1,14 +1,13 @@
 import { MdOpenInNew } from 'react-icons/md';
 import { useSelector } from 'react-redux';
+import { InfoContainer, Spinner } from '../components';
 import {
   selectHasError,
   selectIsLoading,
   selectSelectedRecipe,
 } from '../store/recipesSlice';
 import { replaceYoutubeLink } from '../utils';
-import InfoContainer from './InfoContainer';
 import styles from './Recipe.module.scss';
-import Spinner from './Spinner';
 
 const Recipe = (): JSX.Element => {
   const recipe = useSelector(selectSelectedRecipe);

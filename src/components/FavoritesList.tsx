@@ -1,11 +1,10 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { FavoriteListItem, Spinner } from '../components';
 import { selectHasError, selectLoading } from '../store/categoriesSlice';
 import { selectFavoritedRecipes } from '../store/recipesSlice';
 import { IRecipe } from '../store/types';
-import FavoriteListItem from './FavoriteListItem';
 import styles from './FavoritesList.module.scss';
-import Spinner from './Spinner';
 
 const FavoritesList = (): JSX.Element => {
   const favoritedRecipes = useSelector(selectFavoritedRecipes);
@@ -39,8 +38,12 @@ const FavoritesList = (): JSX.Element => {
   const renderFavoritedRecipes = () => {
     if (loading) return <Spinner />;
 
-    if (hasError || !favoritedRecipes) {
+    if (hasError) {
       return <p>Cannot display favorites...</p>;
+    }
+
+    if (!favoritedRecipes) {
+      return <p>No favorites to display...</p>;
     }
 
     return (

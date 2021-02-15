@@ -3,9 +3,9 @@ import { FaTimes } from 'react-icons/fa';
 
 interface SidebarProps {}
 
-const items = ['tere', 'headaega', 'tere', 'headaega'];
+const navItems = ['Home', 'Favorites', 'About'];
 
-const container = {
+const containerSidebar = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
@@ -15,32 +15,31 @@ const container = {
   },
 };
 
-const listItem = {
+const listItemSidebar = {
   hidden: { opacity: 0 },
   show: { opacity: 1 },
 };
 
 const Sidebar = ({}: SidebarProps): JSX.Element => {
+  // const [showSidebar, setShowSidebar] = useState<boolean>(true);
+
+  // const handleSidebar = (e: MouseEvent<HTMLButtonElement>): void => {
+  //   setShowSidebar(!showSidebar);
+  // };
+
   return (
-    <div className="sidebarWrapper">
-      <aside>
-        <button className="close-btn" /* onClick={closeSidebar} */>
-          <FaTimes />
-        </button>
-        <motion.ul variants={container} initial="hidden" animate="show">
-          {items.map((item, i) => (
-            <motion.li key={i} variants={listItem}>
-              {item}
-            </motion.li>
-          ))}
-        </motion.ul>
-        <div className="links">
-          <ul>
-            <li></li>
-          </ul>
-        </div>
-      </aside>
-    </div>
+    <aside>
+      <button className="close-btn" /* onClick={handleSidebar} */>
+        <FaTimes />
+      </button>
+      <motion.ul variants={containerSidebar} initial="hidden" animate="show">
+        {navItems.map((item, i) => (
+          <motion.li key={i} variants={listItemSidebar}>
+            {item}
+          </motion.li>
+        ))}
+      </motion.ul>
+    </aside>
   );
 };
 

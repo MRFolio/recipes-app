@@ -1,7 +1,7 @@
 const About = (): JSX.Element => {
   return (
-    <section className="section about-section">
-      <h1 className="section-title">about us</h1>
+    <section>
+      <h1>About us</h1>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum quaerat
         fugit officia, omnis repellendus ipsam? Iusto illo quas quidem nobis

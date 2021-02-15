@@ -1,11 +1,10 @@
 import { motion } from 'framer-motion';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { Category, Spinner } from '../components';
 import { getCategories, selectCategories } from '../store/categoriesSlice';
 import { useAppDispatch } from '../store/store';
 import styles from './Categories.module.scss';
-import Category from './Category';
-import Spinner from './Spinner';
 
 const Categories = (): JSX.Element => {
   const dispatch = useAppDispatch();
@@ -32,14 +31,12 @@ const Categories = (): JSX.Element => {
   };
 
   return (
-    <>
+    <motion.section>
       <h3 className={styles.heading}>
         Choose your favourite <span>category!</span>
       </h3>
-      <motion.section className={styles.container}>
-        {renderCategories()}
-      </motion.section>
-    </>
+      <div className={styles.categoriesContainer}>{renderCategories()}</div>
+    </motion.section>
   );
 };
 

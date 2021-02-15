@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, MouseEvent, useRef, useState } from 'react';
+import { ChangeEvent, FormEvent, useRef, useState } from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { useHistory } from 'react-router-dom';
 import { loadRecipeBySearchInput } from '../store/recipesSlice';
@@ -28,10 +28,6 @@ const Search = (): JSX.Element => {
     setQuery(e.target.value);
   };
 
-  const handeClick = (e: MouseEvent<HTMLButtonElement>): void => {
-    // console.log('tere');
-  };
-
   return (
     <form onSubmit={handleSubmit} className={styles.form}>
       {/* <label className={styles.label} htmlFor="search">
@@ -48,7 +44,6 @@ const Search = (): JSX.Element => {
         ref={inputRef}
       />
       <button
-        onClick={handeClick}
         className={styles.btn}
         type="submit"
         aria-label="Click to search recipes"

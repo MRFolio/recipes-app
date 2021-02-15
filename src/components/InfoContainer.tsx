@@ -34,7 +34,9 @@ const InfoContainer = memo(
     const recipe = useSelector(selectSelectedRecipe);
     const favoritedRecipes = useSelector(selectFavoritedRecipes);
     const [showInstructions, setShowInstructions] = useState<boolean>(false);
-    const [addedFavorites, setAddedFavorites] = useState<boolean>(false);
+    const [addedFavorites, setAddedFavorites] = useState<boolean>(
+      favoritedRecipes.some((meal) => meal.idMeal === idMeal)
+    );
     const container = useRef<HTMLDivElement>(null);
     const { push } = useHistory();
 
@@ -119,8 +121,8 @@ const InfoContainer = memo(
         <div className={styles.divider}></div>
         <motion.button
           className={styles.instructionsBtn}
-          aria-label="Open instructions"
-          title="Open instructions"
+          aria-label="Toggle instructions"
+          title="Toggle instructions"
           whileHover={{
             scale: 1.01,
             boxShadow: '0px 2px 5px 3px rgb(148, 148, 148)',

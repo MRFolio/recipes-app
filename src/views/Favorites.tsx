@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
-import BackButton from '../components/BackButton';
-import FavoritesList from '../components/FavoritesList';
+import { BackButton, FavoritesList } from '../components';
 import { pageTransition, pageVariants } from '../utils';
 
 const Favorites = (): JSX.Element => {

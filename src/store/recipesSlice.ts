@@ -119,19 +119,23 @@ export const loadRecipeBySearchInput = createAsyncThunk(
   async (searchInput: string) => {
     const response = await fetch(urlRecipeBySearchName + searchInput);
     const { meals } = await response.json();
-    const formatedMeals: ISingleMeal[] = meals.map(
-      ({ idMeal: id, strMeal: meal, strMealThumb: img }: IFetchedMeals) => ({
-        id,
-        meal,
-        img,
-      })
-    );
+    const formatedMeals: ISingleMeal[] = meals
+      .sort((a: IFetchedMeals, b: IFetchedMeals) =>
+        a.strMeal.localeCompare(b.strMeal)
+      )
+      .map(
+        ({ idMeal: id, strMeal: meal, strMealThumb: img }: IFetchedMeals) => ({
+          id,
+          meal,
+          img,
+        })
+      );
     return formatedMeals;
   }
 );
 
 interface RecipesState {
-  searchedRecipes: IFetchedMeals[];
+  searchedRecipes: ISingleMeal[];
   isLoading: boolean;
   hasError: boolean;
   selectedRecipe?: IRecipe;

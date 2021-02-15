@@ -8,10 +8,6 @@
   align-items: flex-start;
   justify-content: flex-start;
   flex-direction: column;
-  // flex-wrap: wrap;
-  overflow: hidden;
-  // background: rgb(250, 214, 13);
-  // overflow-y: scroll;
   padding: 0.55em;
   margin: 0;
   border-radius: 0.25em;
@@ -32,6 +28,7 @@
     align-items: center;
     width: 100%;
     gap: 0.25em;
+    // margin: 0.3em 0;s
 
     > h2 {
       margin: 0.1em 0.1em 0;

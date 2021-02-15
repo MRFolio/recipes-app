@@ -1,5 +1,6 @@
 import { memo } from 'react';
 import { useSelector } from 'react-redux';
+import { SingleMeal, Spinner } from '../components';
 import {
   selectHasError,
   selectLoading,
@@ -8,8 +9,6 @@ import {
 } from '../store/categoriesSlice';
 import { ISingleMeal } from '../store/types';
 import styles from './CategoryMeals.module.scss';
-import CategoryMeal from './SingleMeal';
-import Spinner from './Spinner';
 
 const CategoryMeals = memo(
   (): JSX.Element => {
@@ -28,19 +27,19 @@ const CategoryMeals = memo(
       return (
         <>
           {categoryMeals?.map((meal: ISingleMeal, index: number) => (
-            <CategoryMeal key={meal.id} {...meal} index={index} />
+            <SingleMeal key={meal.id} {...meal} index={index} />
           ))}
         </>
       );
     };
 
     return (
-      <>
+      <section>
         <h3 className={styles.heading}>
           Choose a recipe from <span>{category}</span> category!
         </h3>
-        <section className={styles.container}>{renderCategoryMeals()}</section>
-      </>
+        <div className={styles.mealsContainer}>{renderCategoryMeals()}</div>
+      </section>
     );
   }
 );

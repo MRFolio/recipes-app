@@ -17,11 +17,9 @@
   }
 }
 
-.container {
-  width: 100%;
+.categoriesContainer {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(186px, 1fr));
-  grid-gap: 0.28rem;
-  overflow: hidden;
+  grid-template-columns: repeat(auto-fill, minmax(192px, 1fr));
+  gap: 0.28em;
   padding-bottom: 1em;
 }

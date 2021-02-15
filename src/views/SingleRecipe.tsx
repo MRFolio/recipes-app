@@ -1,11 +1,10 @@
 import { motion } from 'framer-motion';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import BackButton from '../components/BackButton';
-import Recipe from '../components/Recipe';
+import { BackButton, Recipe } from '../components';
 import { loadRecipeById } from '../store/recipesSlice';
 import { useAppDispatch } from '../store/store';
-import { pageTransition, pageVariants } from '../utils/animationsUtils';
+import { pageTransition, pageVariants } from '../utils';
 
 interface Id {
   id: string;

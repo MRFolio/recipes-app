@@ -9,7 +9,7 @@
 
   &:hover {
     box-shadow: b.$itemBoxShadow;
-    transform: scale(1.04);
+    transform: scale(1.03);
   }
 }
 
@@ -35,6 +35,6 @@
   color: rgb(231, 227, 227);
   background: b.$main-bg;
   margin: 0;
-  padding: 0.34em;
+  padding: 0.44em;
   border-radius: 0 0 0.4em 0.4em;
 }

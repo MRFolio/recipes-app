@@ -45,7 +45,7 @@ export const getCategoryMeals = createAsyncThunk(
     const response = await fetch(urlCategoryMeals + category);
     const { meals } = await response.json();
     const formatedMeals: ISingleMeal[] = meals
-      /* .sort((a: FetchedMeals, b: FetchedMeals) =>
+      /* .sort((a: IFetchedMeals, b: IFetchedMeals) =>
         a.strMeal.localeCompare(b.strMeal)
       ) */
       .map(

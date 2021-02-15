@@ -1,7 +1,4 @@
-// import { Button, Grid, Paper, Typography } from '@material-ui/core';
-// import { makeStyles } from '@material-ui/core/styles';
-// import { ArrowBack } from '@material-ui/icons';
-import BackButton from '../components/BackButton';
+import { BackButton } from '../components';
 
 const Error = (): JSX.Element => (
   <>
