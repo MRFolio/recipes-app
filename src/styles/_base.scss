@@ -18,8 +18,8 @@ $mobile: 676px;
 $small-mobile: 470px;
 
 // mixins
-@mixin mediaQuery($breakpoint) {
-  @media only screen and (max-width: $breakpoint) {
+@mixin mediaQuery($breakpoint, $minOrMaxWidth: max-width) {
+  @media only screen and (#{$minOrMaxWidth}: $breakpoint) {
     @content;
   }
 }

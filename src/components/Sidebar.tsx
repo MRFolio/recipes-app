@@ -1,44 +1,100 @@
 import { motion } from 'framer-motion';
-import { FaTimes } from 'react-icons/fa';
+import { SetStateAction, useCallback, useEffect, useRef } from 'react';
+import { AiOutlineHome } from 'react-icons/ai';
+import { MdFavoriteBorder, MdInfoOutline } from 'react-icons/md';
+import { useHistory } from 'react-router-dom';
+import { delayVariants } from '../utils';
+import styles from './Sidebar.module.scss';
 
-interface SidebarProps {}
-
-const navItems = ['Home', 'Favorites', 'About'];
-
-const containerSidebar = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.5,
-    },
+const navItems = [
+  {
+    id: 0,
+    name: 'Home',
+    path: '/',
+    icon: <AiOutlineHome />,
   },
-};
+  {
+    id: 1,
+    name: 'Favorites',
+    path: '/favorites',
+    icon: <MdFavoriteBorder />,
+  },
+  {
+    id: 2,
+    name: 'About Us',
+    path: '/about',
+    icon: <MdInfoOutline />,
+  },
+];
 
-const listItemSidebar = {
-  hidden: { opacity: 0 },
-  show: { opacity: 1 },
-};
+interface SidebarProps {
+  showSidebar: boolean;
+  setShowSidebar: (value: SetStateAction<boolean>) => void;
+}
 
-const Sidebar = ({}: SidebarProps): JSX.Element => {
-  // const [showSidebar, setShowSidebar] = useState<boolean>(true);
+const Sidebar = ({
+  setShowSidebar,
+  showSidebar,
+}: SidebarProps): JSX.Element => {
+  const sidebarContainer = useRef<HTMLElement>(null);
+  const { push } = useHistory();
 
-  // const handleSidebar = (e: MouseEvent<HTMLButtonElement>): void => {
-  //   setShowSidebar(!showSidebar);
-  // };
+  const handleClick = useCallback(
+    (e) =>
+      sidebarContainer?.current?.contains(e.target)
+        ? null
+        : setShowSidebar(false),
+    [setShowSidebar]
+  );
+
+  const handleEscape = useCallback(
+    (e) => (e.key === 'Escape' ? setShowSidebar(false) : null),
+    [setShowSidebar]
+  );
+
+  const addEventListeners = useCallback(() => {
+    document.addEventListener('keydown', handleEscape);
+    document.addEventListener('mousedown', handleClick);
+  }, [handleClick, handleEscape]);
+
+  const removeEventListeners = useCallback(() => {
+    document.removeEventListener('mousedown', handleClick);
+    document.removeEventListener('keydown', handleEscape);
+  }, [handleClick, handleEscape]);
+
+  useEffect(() => {
+    showSidebar ? addEventListeners() : removeEventListeners();
+
+    return () => removeEventListeners();
+  }, [addEventListeners, removeEventListeners, showSidebar]);
 
   return (
-    <aside>
-      <button className="close-btn" /* onClick={handleSidebar} */>
-        <FaTimes />
-      </button>
-      <motion.ul variants={containerSidebar} initial="hidden" animate="show">
-        {navItems.map((item, i) => (
-          <motion.li key={i} variants={listItemSidebar}>
-            {item}
-          </motion.li>
-        ))}
-      </motion.ul>
+    <aside
+      className={`${styles.sidebarContainer} ${showSidebar && styles.show}`}
+      ref={sidebarContainer}
+    >
+      <nav>
+        <motion.ul className={styles.list}>
+          {navItems.map(({ id, name, path, icon }) => (
+            <motion.li
+              // variants={listItemSidebar}
+              // transition={sidebarTransition}
+              onClick={() => {
+                push(`${path}`);
+                setShowSidebar(false);
+              }}
+              key={id}
+              custom={id}
+              initial="hidden"
+              animate="visible"
+              variants={delayVariants}
+              className={styles.listItem}
+            >
+              {icon} {name}
+            </motion.li>
+          ))}
+        </motion.ul>
+      </nav>
     </aside>
   );
 };

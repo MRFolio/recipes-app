@@ -6,6 +6,8 @@ export { default as FavoriteListItem } from './FavoriteListItem';
 export { default as FavoritesList } from './FavoritesList';
 export { default as InfoContainer } from './InfoContainer';
 export { default as Recipe } from './Recipe';
+export { default as Search } from './Search';
 export { default as SearchRecipes } from './SearchRecipes';
+export { default as Sidebar } from './Sidebar';
 export { default as SingleMeal } from './SingleMeal';
 export { default as Spinner } from './Spinner';

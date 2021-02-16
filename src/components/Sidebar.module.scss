@@ -1,21 +1,77 @@
-.sidebarWrapper {
+@use "../styles/base" as b;
+
+.sidebarContainer {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: grid;
-  place-items: center;
-  // visibility: hidden;
-  visibility: show;
-  z-index: -1;
-  transition: var(--transition);
-  // transform: scale(0);
-  background: rgba(0, 0, 0, 0.5);
+  top: 7%;
+  right: 0;
+  width: 20%;
+  z-index: 9;
+  transform: translateX(100%);
+  transition: all 0.2s ease-out;
+  background: rgba(b.$main-bg, 0.9);
+  box-shadow: b.$paperBoxShadow;
+
+  @include b.mediaQuery(b.$tablet) {
+    width: 26%;
+  }
+
+  @include b.mediaQuery(b.$mobile) {
+    top: 0%;
+    width: 100%;
+    transform: translateY(-100%);
+  }
 
   &.show {
     visibility: visible;
-    z-index: 2;
-    transform: scale(1);
+    transform: translateX(0);
+
+    @include b.mediaQuery(b.$mobile) {
+      transform: translateY(0);
+    }
+  }
+
+  nav {
+    width: 100%;
+  }
+
+  .list {
+    padding: 0;
+    margin: 0;
+
+    @include b.mediaQuery(b.$mobile) {
+      margin: 0 auto;
+      // max-width: 560px;
+    }
+    > li {
+      list-style-type: none;
+    }
+
+    .listItem {
+      font-size: 1.5rem;
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 0.5em;
+      padding: 0.75em 0.5em;
+      color: white;
+      cursor: pointer;
+      transition: all 0.2s ease-out;
+
+      @include b.mediaQuery(b.$mobile) {
+        // justify-content: flex-end;
+      }
+
+      &:hover {
+        color: b.$highlightColor;
+        box-shadow: b.$paperBoxShadow;
+        background: rgba(255, 255, 255, 0.22);
+      }
+
+      &:focus {
+        box-shadow: inset 0px 0px 5px #c1c1c1;
+        outline: 1px solid rgb(210, 210, 245);
+      }
+    }
   }
 }
