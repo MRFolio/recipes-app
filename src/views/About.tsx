@@ -1,3 +1,5 @@
+import { BackButton } from '../components';
+
 const About = (): JSX.Element => {
   return (
     <main className="main">
@@ -14,6 +16,7 @@ const About = (): JSX.Element => {
           repudiandae id rerum.
         </p>
       </section>
+      <BackButton />
     </main>
   );
 };

@@ -47,3 +47,21 @@
     }
   }
 }
+
+.favoritesBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4em;
+  @include b.btnDefaults;
+  border: 2px solid rgb(243, 67, 13);
+  background: rgb(241, 61, 61);
+  // color: b.$highlightColor;
+  color: white;
+  cursor: pointer;
+
+  .favoriteIcon {
+    font-size: 1.12rem;
+    color: white;
+  }
+}

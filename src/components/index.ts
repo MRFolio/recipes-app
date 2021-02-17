@@ -5,6 +5,8 @@ export { default as CategoryMeals } from './CategoryMeals';
 export { default as FavoriteListItem } from './FavoriteListItem';
 export { default as FavoritesList } from './FavoritesList';
 export { default as InfoContainer } from './InfoContainer';
+export { default as Ingredient } from './Ingredient';
+export { default as LinkComponent } from './Link';
 export { default as Recipe } from './Recipe';
 export { default as Search } from './Search';
 export { default as SearchRecipes } from './SearchRecipes';

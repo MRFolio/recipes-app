@@ -1,6 +1,6 @@
 @use "../styles/base" as b;
 
-.btn-primary {
+.btnPrimary {
   display: flex;
   align-items: center;
   gap: 0.5em;
@@ -20,8 +20,8 @@
     background: b.$main-bg;
     color: whitesmoke;
   }
-}
 
-.icon {
-  font-size: 1.5rem;
+  .icon {
+    font-size: 1.5rem;
+  }
 }

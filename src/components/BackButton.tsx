@@ -13,7 +13,7 @@ const BackButton = (): JSX.Element => {
   return (
     <motion.button
       onClick={handleBack}
-      className={styles['btn-primary']}
+      className={styles.btnPrimary}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.96 }}
     >

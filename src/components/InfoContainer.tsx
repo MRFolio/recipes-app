@@ -3,7 +3,8 @@ import { memo, MouseEvent, useRef, useState } from 'react';
 import { BsChevronDown, BsChevronUp } from 'react-icons/bs';
 import { MdFavorite, MdFeaturedPlayList } from 'react-icons/md';
 import { useSelector } from 'react-redux';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+import { Ingredient, LinkComponent } from '../components';
 import {
   addToFavorites,
   removeFromFavorites,
@@ -16,9 +17,9 @@ import {
   favoriteVariants,
   paragraphTransition,
   paragraphVariants,
+  whileHover,
 } from '../utils';
 import styles from './InfoContainer.module.scss';
-import Ingredient from './Ingredient';
 
 const InfoContainer = memo(
   ({
@@ -84,17 +85,14 @@ const InfoContainer = memo(
       <div ref={container} className={styles.infoContainer}>
         <div className={styles.titleContainer}>
           <h2>{meal}</h2>
-          <Link
-            to={`/category/${category}`}
-            style={{ textDecoration: 'inherit' }}
-          >
+          <LinkComponent path={`/category/${category}`}>
             <span
               className={styles.categoryText}
               title={`Recipe category: ${category}`}
             >
               {category}
             </span>
-          </Link>
+          </LinkComponent>
         </div>
         <p className={styles.areaText} title="Recipe origin area">
           {area}
@@ -121,12 +119,9 @@ const InfoContainer = memo(
         <div className={styles.divider}></div>
         <motion.button
           className={styles.instructionsBtn}
-          aria-label="Toggle instructions"
           title="Toggle instructions"
-          whileHover={{
-            scale: 1.01,
-            boxShadow: '0px 2px 5px 3px rgb(148, 148, 148)',
-          }}
+          aria-label={'Toggle instructions'}
+          whileHover={whileHover}
           whileTap={{ scale: 0.96 }}
           onClick={handleInstructionsClick}
         >
@@ -153,10 +148,7 @@ const InfoContainer = memo(
           className={`${styles.favoritesBtn} ${addedFavorites && styles.added}`}
           aria-label={favoritesText}
           title={favoritesText}
-          whileHover={{
-            scale: 1.01,
-            boxShadow: '0px 2px 5px 3px rgb(148, 148, 148)',
-          }}
+          whileHover={whileHover}
           whileTap={{ scale: 0.96 }}
           onClick={handleFavoriteClick}
         >
@@ -174,10 +166,7 @@ const InfoContainer = memo(
               className={styles.allFavoritesBtn}
               aria-label="Go to page with all your favorites listed"
               title="Go to page with all your favorites listed"
-              whileHover={{
-                scale: 1.01,
-                boxShadow: '0px 2px 5px 3px rgb(148, 148, 148)',
-              }}
+              whileHover={whileHover}
               whileTap={{ scale: 0.96 }}
               initial="hidden"
               animate="visible"

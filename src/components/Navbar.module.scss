@@ -30,7 +30,7 @@
   }
 
   @include b.mediaQuery(b.$mobile) {
-    font-size: 1.45rem;
+    font-size: 1.2rem;
   }
   @include b.mediaQuery(b.$small-mobile) {
     display: none;
@@ -70,33 +70,3 @@
     font-size: 1.6rem;
   }
 }
-
-// .nav {
-//     .list {
-//       display: flex;
-//       justify-content: space-between;
-//       align-items: center;
-//       gap: 1em;
-//       color: $white;
-
-//       & > li {
-//         list-style-type: none;
-//       }
-//     }
-
-//     a {
-//       color: $white;
-//       text-decoration: none;
-
-//       &:visited {
-//         color: $white;
-//       }
-//       &:hover {
-//         color: b.$border-highlight;
-//       }
-//     }
-
-//     .selected {
-//       border-bottom: 2px solid b.$border-highlight;
-//     }
-//   }

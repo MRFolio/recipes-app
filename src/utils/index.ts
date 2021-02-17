@@ -14,6 +14,7 @@ import {
 import { getLocalStorage, setLocalStorage } from './localStorageHelper';
 import { filterEmptyItems } from './recipeSliceHelper';
 import { replaceYoutubeLink } from './replaceYoutubeLink';
+import whileHover from './whileHover';
 
 export {
   pageVariants,
@@ -31,4 +32,5 @@ export {
   element2Variant,
   transitionItems,
   favoriteVariants,
+  whileHover,
 };

@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { memo } from 'react';
-import { Link } from 'react-router-dom';
 import { delayVariantsFaster } from '../utils';
+import LinkComponent from './Link';
 import styles from './SingleMeal.module.scss';
 
 interface IMealProps {
@@ -13,7 +13,7 @@ interface IMealProps {
 
 const SingleMeal = memo(
   ({ id, meal, img, index }: IMealProps): JSX.Element => (
-    <Link to={`/recipes/${id}`} style={{ textDecoration: 'inherit' }}>
+    <LinkComponent path={`/recipes/${id}`}>
       <motion.article
         className={styles.card}
         custom={index}
@@ -27,7 +27,7 @@ const SingleMeal = memo(
           <figcaption className={styles.caption}>{meal}</figcaption>
         </figure>
       </motion.article>
-    </Link>
+    </LinkComponent>
   )
 );
 

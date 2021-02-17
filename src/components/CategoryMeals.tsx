@@ -44,13 +44,4 @@ const CategoryMeals = memo(
   }
 );
 
-// <Link to={`/category/${category}`}>
-// <article className={styles.container}>
-//   <div className={styles.imgContainer}>
-//     <img src={img} alt={`${category} on plate`} />
-//   </div>
-//   <h4 className={styles.heading}>{category}</h4>
-// </article>
-// </Link>
-
 export default CategoryMeals;

@@ -1,7 +1,8 @@
 import { motion } from 'framer-motion';
 import { memo } from 'react';
+import { MdFavorite } from 'react-icons/md';
 import { Link } from 'react-router-dom';
-import { delayVariants } from '../utils';
+import { delayVariants, whileHover } from '../utils';
 import styles from './FavoriteListItem.module.scss';
 
 interface FavoriteListItemProps {
@@ -13,6 +14,8 @@ interface FavoriteListItemProps {
 
 const FavoriteListItem = memo(
   ({ idMeal, img, meal, index }: FavoriteListItemProps): JSX.Element => {
+    const handleRemoveFavorite = (idMeal: string): void => {};
+
     return (
       <Link to={`/recipes/${idMeal}`} style={{ textDecoration: 'inherit' }}>
         <motion.article
@@ -26,6 +29,17 @@ const FavoriteListItem = memo(
             <img src={img} alt={`${meal} preview`} className={styles.image} />
             <figcaption className={styles.caption}>{meal}</figcaption>
           </figure>
+          <motion.button
+            className={styles.favoritesBtn}
+            aria-label="Remove recipe from favorites"
+            title="Remove recipe from favorites"
+            whileHover={whileHover}
+            whileTap={{ scale: 0.96 }}
+            onClick={() => handleRemoveFavorite('tere')}
+          >
+            Remove from favorites
+            <MdFavorite className={styles.favoriteIcon} />
+          </motion.button>
         </motion.article>
       </Link>
     );
