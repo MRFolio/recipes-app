@@ -3,18 +3,19 @@
 .card {
   background: #ede7f6;
   padding: 0.75em;
-  cursor: pointer;
 
   .imageContainer {
     margin: 0 auto;
     border: 1px solid b.$main-bg;
-    border-radius: 0.4em;
+    border-radius: 0.3em;
     transition: transform 0.25s ease-out, box-shadow 0.25s ease-out;
     position: relative;
+    cursor: pointer;
 
     &:hover {
       transform: scale(1.03);
-      box-shadow: b.$itemBoxShadow;
+      box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px,
+        rgba(0, 0, 0, 0.23) 0px 3px 6px;
 
       &:after {
         @include b.afterElement;
@@ -26,7 +27,7 @@
       width: 100%;
       height: 100%;
       display: block;
-      border-radius: 0.4em 0.4em 0 0;
+      border-radius: 0.3em 0.3em 0 0;
     }
 
     .caption {
@@ -48,16 +49,23 @@
   }
 }
 
+.divider {
+  height: 1px;
+  width: 100%;
+  margin: 0.5em auto;
+  background-color: #bbb;
+}
+
 .favoritesBtn {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.4em;
+  gap: 0.25em;
   @include b.btnDefaults;
   border: 2px solid rgb(243, 67, 13);
+  border-radius: 0.3em;
   background: rgb(241, 61, 61);
-  // color: b.$highlightColor;
-  color: white;
+  color: rgb(253, 253, 253);
   cursor: pointer;
 
   .favoriteIcon {

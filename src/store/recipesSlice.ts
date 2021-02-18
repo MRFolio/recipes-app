@@ -160,8 +160,11 @@ const recipesSlice = createSlice({
   initialState,
   reducers: {
     addToFavorites(state, { payload }: PayloadAction<IRecipe>) {
-      // const newArray = [...state.favoritedRecipes];
-      state.favoritedRecipes?.push(payload);
+      const addRecipe: IRecipe[] = [...state.favoritedRecipes, payload];
+      const sortedFavorites = addRecipe.sort((a: IRecipe, b: IRecipe) =>
+        a.meal.localeCompare(b.meal)
+      );
+      state.favoritedRecipes = sortedFavorites;
       localStorage.setItem('favorites', JSON.stringify(state.favoritedRecipes));
     },
     removeFromFavorites(state, { payload }: PayloadAction<string>) {

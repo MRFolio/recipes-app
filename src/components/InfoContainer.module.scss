@@ -83,7 +83,7 @@
   .ingredientContainer {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(126px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(126px, 1fr));
     margin: 0;
     padding: 0;
     gap: 0.35em;

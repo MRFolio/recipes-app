@@ -8,8 +8,9 @@
   z-index: 9;
   transform: translateX(100%);
   transition: all 0.2s ease-out;
-  background: rgba(b.$main-bg, 0.9);
+  background: rgba(b.$main-bg, 0.99);
   box-shadow: b.$paperBoxShadow;
+  margin-top: -0.44em;
 
   @include b.mediaQuery(b.$tablet) {
     width: 26%;
@@ -19,6 +20,7 @@
     top: 0%;
     width: 100%;
     transform: translateY(-100%);
+    margin: 0;
   }
 
   &.show {
@@ -57,10 +59,6 @@
       color: white;
       cursor: pointer;
       transition: all 0.2s ease-out;
-
-      @include b.mediaQuery(b.$mobile) {
-        // justify-content: flex-end;
-      }
 
       &:hover {
         color: b.$highlightColor;

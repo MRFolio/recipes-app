@@ -21,6 +21,7 @@ const SingleMeal = memo(
         animate="visible"
         variants={delayVariantsFaster}
         title={`Click to see details of ${meal}`}
+        aria-label={`Click to see details of ${meal}`}
       >
         <figure className={styles.imageContainer}>
           <img src={img} alt={`${meal} preview`} className={styles.image} />

@@ -22,4 +22,8 @@
   grid-template-columns: repeat(auto-fill, minmax(192px, 1fr));
   gap: 0.28em;
   padding-bottom: 1em;
+
+  @include b.mediaQuery(b.$big-screen) {
+    overflow-x: hidden;
+  }
 }

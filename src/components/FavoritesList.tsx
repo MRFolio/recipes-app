@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { FavoriteListItem, Spinner } from '../components';
 import { selectHasError, selectLoading } from '../store/categoriesSlice';
@@ -15,6 +15,20 @@ const FavoritesList = (): JSX.Element => {
   >([...favoritedRecipes]);
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
 
+  const filterFavoritedRecipes = useCallback((): void => {
+    selectedCategory === 'All'
+      ? setFilteredFavoritedRecipes(favoritedRecipes)
+      : setFilteredFavoritedRecipes(
+          favoritedRecipes.filter(
+            ({ category }) => category === selectedCategory
+          )
+        );
+  }, [favoritedRecipes, selectedCategory]);
+
+  useEffect(() => {
+    filterFavoritedRecipes();
+  }, [favoritedRecipes, selectedCategory, filterFavoritedRecipes]);
+
   const uniqueCategories: (string | undefined)[] = Array.from(
     new Set(favoritedRecipes.map((recipe) => recipe.category))
   );
@@ -25,13 +39,6 @@ const FavoritesList = (): JSX.Element => {
   ];
 
   const handleFilterClick = (clickedCategory: string): void => {
-    clickedCategory === 'All'
-      ? setFilteredFavoritedRecipes(favoritedRecipes)
-      : setFilteredFavoritedRecipes(
-          favoritedRecipes.filter(
-            (recipe) => recipe.category === clickedCategory
-          )
-        );
     setSelectedCategory(clickedCategory);
   };
 
@@ -42,7 +49,7 @@ const FavoritesList = (): JSX.Element => {
       return <p>Cannot display favorites...</p>;
     }
 
-    if (!favoritedRecipes) {
+    if (!favoritedRecipes || !filteredFavoritedRecipes) {
       return <p>No favorites to display...</p>;
     }
 

@@ -22,6 +22,8 @@ const Category = memo(
       history.push(`/category/${category}`);
     };
 
+    const articleLabel: string = `Click to see meals of ${category.toUpperCase()} category`;
+
     return (
       <motion.article
         onClick={handleClick}
@@ -30,6 +32,8 @@ const Category = memo(
         initial="hidden"
         animate="show"
         transition={transitionItems}
+        title={articleLabel}
+        aria-label={articleLabel}
       >
         <motion.div
           className={styles.imgContainer}
