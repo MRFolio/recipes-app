@@ -24,7 +24,8 @@ $small-mobile: 470px;
   }
 }
 
-@mixin btnDefaults {
+// extend placeholders
+%btnDefaults {
   width: 100%;
   color: rgb(251, 251, 251);
   border-radius: 0.25em;
@@ -32,7 +33,7 @@ $small-mobile: 470px;
   letter-spacing: 0.06em;
 }
 
-@mixin afterElement {
+%afterElement {
   position: absolute;
   top: 0.05em;
   right: 0.05em;
@@ -46,6 +47,8 @@ $small-mobile: 470px;
   color: rgb(251, 251, 251);
   z-index: 15;
 }
+
+// resets
 
 html {
   line-height: 1.15;

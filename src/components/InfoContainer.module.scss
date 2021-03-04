@@ -67,10 +67,10 @@
   }
 
   .ingredientsTitle {
+    @extend %btnDefaults;
     text-align: center;
     font-weight: normal;
     margin: 0em auto 0.44em;
-    @include b.btnDefaults;
     padding: 0.5em 0;
     background: b.$main-bg;
 
@@ -102,7 +102,7 @@
     background: b.$btnSecondary;
     border: 2px solid b.$btnSecondary;
     cursor: pointer;
-    @include b.btnDefaults;
+    @extend %btnDefaults;
 
     .icon {
       font-size: 1.12rem;
@@ -110,11 +110,11 @@
   }
 
   .favoritesBtn {
+    @extend %btnDefaults;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 0.4em;
-    @include b.btnDefaults;
     border: 2px solid rgb(243, 67, 13);
     background: rgb(241, 61, 61);
     // color: b.$highlightColor;
@@ -137,11 +137,11 @@
   }
 
   .allFavoritesBtn {
+    @extend %btnDefaults;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 0.4em;
-    @include b.btnDefaults;
     border: 2px solid b.$btnSecondary;
     background: b.$btnSecondary;
     // color: b.$highlightColor;

@@ -23,7 +23,7 @@
     transform: scale(1.03);
 
     &:after {
-      @include b.afterElement;
+      @extend %afterElement;
     }
   }
 

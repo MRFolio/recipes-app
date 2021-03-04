@@ -18,7 +18,7 @@
         rgba(0, 0, 0, 0.23) 0px 3px 6px;
 
       &:after {
-        @include b.afterElement;
+        @extend %afterElement;
       }
     }
 
@@ -57,11 +57,11 @@
 }
 
 .favoritesBtn {
+  @extend %btnDefaults;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.25em;
-  @include b.btnDefaults;
   border: 2px solid rgb(243, 67, 13);
   border-radius: 0.3em;
   background: rgb(241, 61, 61);
